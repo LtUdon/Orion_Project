@@ -46,8 +46,8 @@ A minimalist RTS where strategic timing is key. Celestial objectives are not sta
 
 - **Setting:** Begins in the inner Solar System, expanding toward the Milky Way’s **Perseus Arm**
 - **Factions:**
-  - **Trojan Resistance** – A rebellious faction fighting for independence
-  - **Orion Commonwealth** – A galactic empire aiming to consolidate power
+  - **Trojan Rebellion -> Resistance** – A rebellious faction fighting for independence
+  - **Orion Commonwealth -> Empire** – A galactic empire aiming to consolidate power
 
 ## 📚 Lore (WIP)
 
