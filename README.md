@@ -1,6 +1,6 @@
 # Project Orion
 
-**Project Orion** is a minimalist real-time strategy (RTS) game set in the vast reaches of space. As a fleet commander, your mission is to conquer orbiting planets and moons by mastering the timing of your deployments. Unlike traditional RTS games with static objectives, **Project Orion** introduces dynamic battlegrounds—celestial bodies that orbit their stars—challenging players to adapt their strategy in real time.
+**Project Orion** is a minimalist real-time strategy (RTS) game set in the vast reaches of space. As a fleet commander, your mission is to conquer orbiting planets and moons by mastering the timing of your deployments. Unlike traditional RTS games with static objectives, **Project Orion** introduces dynamic battlegrounds—celestial bodies that orbit their stars, challenging players to adapt their strategy in real time.
 
 ## 🎮 Features
 
@@ -20,11 +20,11 @@
   Designed for a narrative-driven single-player experience, with plans for online PvP multiplayer post-launch.
 
 - **Sci-Fi Aesthetic & Lore**  
-  Immerse yourself in a future of interstellar colonization, galactic factions, and evolving strategy.
+  Immerse yourself in a future of interstellar colonization, interstellar factions, and evolving strategy.
 
 ## 🧠 Core Concept
 
-A minimalist RTS where strategic timing is key. Celestial objectives are not static—they orbit a central star—creating a unique layer of real-time challenge in every mission.
+A minimalist RTS where strategic timing is key. Celestial objectives are not static—they orbit a central star, creating a unique layer of real-time challenge in every mission.
 
 ## 👥 Target Audience
 
@@ -46,8 +46,8 @@ A minimalist RTS where strategic timing is key. Celestial objectives are not sta
 
 - **Setting:** Begins in the inner Solar System, expanding toward the Milky Way’s **Perseus Arm**
 - **Factions:**
-  - **Trojan Rebellion -> Resistance** – A rebellious faction fighting for independence
-  - **Orion Commonwealth -> Empire** – A galactic empire aiming to consolidate power
+  - **Trojan Rebellion &rarr; Resistance** – A rebellious faction fighting for independence
+  - **Orion Commonwealth &rarr; Empire** – A interstellar empire aiming to consolidate power
 
 ## 📚 Lore (WIP)
 
