@@ -8,7 +8,6 @@
 - [🌿 Branching Strategy](#-branching-strategy)
 - [📋 Task Management](#-task-management)
 - [👀 Code Review Process](#-code-review-process)
-- [🧪 Testing Guidelines](#-testing-guidelines)
 - [📝 Documentation Standards](#-documentation-standards)
 - [🛠️ Troubleshooting](#-troubleshooting)
 - [❓ Frequently Asked Questions](#-frequently-asked-questions)
@@ -83,15 +82,6 @@ When creating a new actor class (or any class in that matter):
 3. Address feedback promptly.
 4. Merge only after approval and passing checks.
 
-## 🧪 Testing Guidelines
-
-- Write unit tests for new features and bug fixes.
-- Run all tests before pushing changes:
-  ```sh
-  <test-command>
-  ```
-- Document any manual testing steps if automated tests are not possible.
-
 ## 📝 Documentation Standards
 
 - Update documentation for any new features or changes.
@@ -123,7 +113,7 @@ A: Follow the instructions in `README.md`.
 
 ## 📬 Contact Information
 
-- **Project Lead:** [Name] (<email>)
-- **Slack/Discord:** [Link]
-- **Issue Tracker:** [GitHub Issues](<repo-url>/issues)
+- **Project Lead:** Gian Alfonso (gianalfonso825@gmail.com or alfonsogian225@gmail.com)
+- **Slack/Discord:** lt_noodle
+- **Issue Tracker:** Orion Project (https://github.com/Imanoodle13/Orion_Project/issues)
 - For urgent issues, mention the team in the appropriate channel.
