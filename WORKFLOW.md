@@ -103,10 +103,10 @@ When creating a new actor class (or any class in that matter):
 ## ❓ Frequently Asked Questions
 
 **Q: The editor doesn't recognize my new class.**  
-A: Try rebuilding the project and restarting the UE Editor.
+A: If the class is made in C++, try rebuilding the project and restarting the UE Editor.
 
 **Q: Live Coding isn't working.**  
-A: Ensure Live Coding is enabled in UE Editor settings.
+A: Ensure Live Coding is enabled in UE Editor settings. So far, retriggering Live Coding seems to work.
 
 **Q: How do I update dependencies?**  
 A: Follow the instructions in `README.md`.
