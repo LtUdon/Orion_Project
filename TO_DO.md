@@ -1,5 +1,6 @@
 # TO DO
 ## Short-Term
+* Replace `maxShips` with `orionShipCount` and `trojanShipCount`.
 * Redesign the *Orbiter class* hierarchy based on the `Diagrams.drawio` "Orbiter_Class" page.
 * Once the *Orbiter* subclasses have been defined, then adding the mesh (for assets) will be applicable.
 
