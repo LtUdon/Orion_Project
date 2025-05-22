@@ -1,7 +1,6 @@
 # TO DO
 ## 📝 Short-Term
-* Redesign the *Orbiter class* hierarchy based on the `Diagrams.drawio` "Orbiter_Class" page.
-* Once the *Orbiter* subclasses have been defined, then adding the mesh (for assets) will be applicable.
+* Consider implementing rails for node navigation rather than loosely-based orbit systems.
 
 ## 💡 Considerations
 ### 🔁 <u>Build Actor Classes in context of Purpose</u>
@@ -14,6 +13,9 @@
 - Define each class and it succeeding subclass(es).
 - This allows you to see a clear path on how the classes are defined and prevents confusion.
 - You can use a `.drawio` file for this.
+### 🟦 <u>Blueprint (BL) and C++ Considerations</u>
+- Given some class hierarchy, for best practice, classes/subclasses on the Parent-side is best implemented in C++ while subclasses on the Child-side is where Blueprint (BL) implementation is acceptable.
+- This organization offers better performance while still accommodating simpler editing.
 ### 🎮 <u>Actor/Pawn Implementation</u>
 - Orbiter Nodes &rarr; **Actors**
 - Ship Nodes &rarr; **Pawns**
