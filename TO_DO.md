@@ -1,7 +1,6 @@
 # TO DO
 ## 📝 Short-Term
-* Consider implementing rails for node navigation rather than loosely-based orbit systems.
-
+- Direction of orbit is strictly based on the angle of rorat
 ## 💡 Considerations
 ### 🔁 <u>Build Actor Classes in context of Purpose</u>
 - Rather than haphazardly placing models into the viewport and attempting to add the actors afterward, instead:

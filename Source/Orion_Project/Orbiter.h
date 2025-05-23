@@ -27,4 +27,16 @@ public:
 	// Editable mesh component
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Default")
 	UStaticMeshComponent* mesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default")
+	AActor* targetActor;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default")
+	float revolutionSpeed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category  = "Default")
+	float rotationSpeed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default")
+	float range;
 };
