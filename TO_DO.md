@@ -1,6 +1,8 @@
 # TO DO
 ## 📝 Short-Term
-- Direction of orbit is strictly based on the angle of rorat
+- Test multi-level orbits
+- Compile to reorganize header (`.h`) for *Details Panel*.
+- Try implementing the subclasses shown in `Diagrams.drawio`.
 ## 💡 Considerations
 ### 🔁 <u>Build Actor Classes in context of Purpose</u>
 - Rather than haphazardly placing models into the viewport and attempting to add the actors afterward, instead:
