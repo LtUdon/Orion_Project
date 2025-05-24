@@ -89,7 +89,7 @@ When creating a new actor class (or any class in that matter):
 - Keep `README.md` and this workflow up to date.
 
 ## 🛠️ Troubleshooting
-
+### General Case
 - **Build Fails:**  
   - Check error logs in Visual Studio and UE Editor.
   - Ensure all dependencies are installed.
@@ -99,7 +99,62 @@ When creating a new actor class (or any class in that matter):
 
 - **Common Errors:**  
   - Refer to the [FAQ](#-frequently-asked-questions) section.
+### In-Project Cases
+#### "`Build Failed.`"
+```
+Accepted Live coding shortcut
+---------- Creating patch ----------
 
+...
+
+Total Time in Unreal Build Accelerator local executor: ...
+Total execution time: ...
+Build failed.
+```
+- This error message indicates that, whatever the specific error might be, it is within your C++ code.
+##### ✅ Resolve
+[Microsoft Learn | Compiler Warning (level 4) C4458](https://learn.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-4-c4458?view=msvc-170)
+- You can fix this directly in VS which can direct you to the specific line of the error.
+#### Error Code `1224` among other Link Errors
+```
+Accepted Live coding shortcut
+---------- Creating patch ----------
+
+...
+
+Building patch from ...
+	Creating library C:...
+LINK : fatal error LNK1105: cannot close file '...'; error code 1224
+Failed to link patch (0.000s) (Exit code: 0x451)
+```
+- This error statement generally means that the linker is unable to close a specific file because it is currently in use by another process.
+- Arises in UE when the patch file is locked, preventing the linker from completing the build process.
+- <u>`error code 1224`</u>
+	- Error code 1224 corresponds to the Windows sysstem error: "The requested operation cannot be performed on a file with a user-mapped section open."
+##### ✅ Resolve
+1. **Close the UE**
+	- Specifically, close UE.
+	- Build within VS. 
+		- This action releases any locks the editor may have on the patch file.
+2. **Delete Temporary files**
+	- Navigate to your project's `Binaries\Win64` directory and delete any existing `UnrealEditor-Orion_Project.patch_0.exe` files.
+		- This removes potentially corrupted or locked files that could interfere with the build process.
+3. **Perform a Full Build in VS**\
+	In VS:  
+	-   [Set the build configuration to *Development Editor*.](https://learn.microsoft.com/en-us/visualstudio/ide/understanding-build-configurations?view=vs-2022)
+	- Build the project by selecting *Build &rarr; Build Solution* or *Ctrl + Shift + B*.
+4. **Disable Live Coding Temporarily**\
+	In UE:
+	- Go to *Edit &rarr; Editor Preferences &rarr; General &rarr; Live Coding*.
+	- Close the editor and rebuild your project in VS.
+5. **Check for Antivirus Interference**\
+	Some antivirus programs may lock files while scanning. If so, wait for the scan to complete.
+##### 🔨 Considerations
+- Avoid building with the editor open.
+- Use Source Control.
+- Regularly Clean Build Artifacts
+	- Periodically clean your project's intermediate and binary files.
+	- This can be done by deleting the `Intermediate` and `Binaries` filders, then regenrating project files.
 ## ❓ Frequently Asked Questions
 
 **Q: The editor doesn't recognize my new class.**  

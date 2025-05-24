@@ -1,7 +1,6 @@
 # TO DO
 ## 📝 Short-Term
 - Test multi-level orbits
-- Compile to reorganize header (`.h`) for *Details Panel*.
 - Try implementing the subclasses shown in `Diagrams.drawio`.
 ## 💡 Considerations
 ### 🔁 <u>Build Actor Classes in context of Purpose</u>

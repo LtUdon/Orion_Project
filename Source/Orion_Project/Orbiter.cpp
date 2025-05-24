@@ -14,7 +14,7 @@ AOrbiter::AOrbiter()
 
 	// Default values
 	revolutionSpeed = 1.0f;
-	rotationSpeed = 1.0f;
+	rotationSpeed = 30.0f;
 	range = 10.0f;          // Orbit radius
 }
 
@@ -23,6 +23,9 @@ void AOrbiter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	FVector center = targetActor ? targetActor->GetActorLocation() : GetActorLocation();
+	FVector toOrbiter = GetActorLocation() - center;
+	initialAngle = FMath::Atan2(toOrbiter.Y, toOrbiter.X); // Calculate initial angle based on the current position
 }
 
 // Called every frame
@@ -33,8 +36,11 @@ void AOrbiter::Tick(float DeltaTime)
 	Orbit();
 }
 
+// Handles orbit behavior
 void AOrbiter::Orbit()
-{
+{	
+	float scalar                = 0.01f; // Scale factor for revolution speed
+	float scaledRevolutionSpeed = revolutionSpeed * scalar;
 	FVector center;
 	if (targetActor)
 	{
@@ -47,7 +53,7 @@ void AOrbiter::Orbit()
 
 	// Calculate orbit position
 	float time = GetWorld()->GetTimeSeconds();
-	float angle = time * revolutionSpeed;
+	float angle = time * scaledRevolutionSpeed + initialAngle;
 
 	float x = center.X + range * FMath::Cos(angle);
 	float y = center.Y + range * FMath::Sin(angle);
