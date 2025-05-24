@@ -1,16 +1,16 @@
 # Project Workflow
 
 ## 📑 Table of Contents
-- [🏁 Introduction](#introduction)
-- [🚀 Build & Deployment](#build--deployment)
-- [🛠️ Getting Started](#getting-started)
-- [🌿 Branching Strategy](#branching-strategy)
-- [📋 Task Management](#task-management)
-- [👀 Code Review Process](#code-review-process)
-- [📝 Documentation Standards](#documentation-standards)
-- [🛠️ Troubleshooting](#troubleshooting)
-- [❓ Frequently Asked Questions](#frequently-asked-questions)
-- [📬 Contact Information](#contact-information)
+- [🏁 Introduction](https://github.com/Imanoodle13/Orion_Project/edit/master/WORKFLOW.md#-introduction)
+- [🚀 Build & Deployment](https://github.com/Imanoodle13/Orion_Project/edit/master/WORKFLOW.md#-build--deployment)
+- [🛠️ Getting Started](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#%EF%B8%8F-getting-started)
+- [🌿 Branching Strategy](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#-branching-strategy)
+- [📋 Task Management](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#-task-management)
+- [👀 Code Review Process](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#-code-review-process)
+- [📝 Documentation Standards](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#-documentation-standards)
+- [🛠️ Troubleshooting](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#%EF%B8%8F-troubleshooting)
+- [❓ Frequently Asked Questions](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#-frequently-asked-questions)
+- [📬 Contact Information](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#-contact-information)
 
 ## 🏁 Introduction
 
