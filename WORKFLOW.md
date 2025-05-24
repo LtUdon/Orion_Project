@@ -1,17 +1,16 @@
 # Project Workflow
 
 ## 📑 Table of Contents
-
-- [🏁 Introduction](#-introduction)
-- [🚀 Build & Deployment](#-build--deployment)
-- [🛠️ Getting Started](#-getting-started)
-- [🌿 Branching Strategy](#-branching-strategy)
-- [📋 Task Management](#-task-management)
-- [👀 Code Review Process](#-code-review-process)
-- [📝 Documentation Standards](#-documentation-standards)
-- [🛠️ Troubleshooting](#-troubleshooting)
-- [❓ Frequently Asked Questions](#-frequently-asked-questions)
-- [📬 Contact Information](#-contact-information)
+- [🏁 Introduction](#introduction)
+- [🚀 Build & Deployment](#build--deployment)
+- [🛠️ Getting Started](#getting-started)
+- [🌿 Branching Strategy](#branching-strategy)
+- [📋 Task Management](#task-management)
+- [👀 Code Review Process](#code-review-process)
+- [📝 Documentation Standards](#documentation-standards)
+- [🛠️ Troubleshooting](#troubleshooting)
+- [❓ Frequently Asked Questions](#frequently-asked-questions)
+- [📬 Contact Information](#contact-information)
 
 ## 🏁 Introduction
 
