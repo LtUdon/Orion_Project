@@ -1,8 +1,8 @@
 # Project Workflow
 
 ## 📑 Table of Contents
-- [🏁 Introduction](https://github.com/Imanoodle13/Orion_Project/edit/master/WORKFLOW.md#-introduction)
-- [🚀 Build & Deployment](https://github.com/Imanoodle13/Orion_Project/edit/master/WORKFLOW.md#-build--deployment)
+- [🏁 Introduction](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#-introduction)
+- [🚀 Build & Deployment](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#-introduction)
 - [🛠️ Getting Started](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#%EF%B8%8F-getting-started)
 - [🌿 Branching Strategy](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#-branching-strategy)
 - [📋 Task Management](https://github.com/Imanoodle13/Orion_Project/blob/master/WORKFLOW.md#-task-management)
