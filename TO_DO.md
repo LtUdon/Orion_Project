@@ -1,6 +1,6 @@
 # TO DO
 ## 📝 Short-Term
-- Test multi-level orbits
+- Create `Allegiance` enumeration with proper procedure.
 - Try implementing the subclasses shown in `Diagrams.drawio`.
 ## 💡 Considerations
 ### 🔁 <u>Build Actor Classes in context of Purpose</u>
