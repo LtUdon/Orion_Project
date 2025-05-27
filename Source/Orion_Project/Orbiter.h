@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h" // Added for mesh editing
+#include "Affiliation.h" // Include the Affiliation enum header
 #include "Orbiter.generated.h"
 
 UCLASS()
@@ -42,6 +43,9 @@ public:
 
 	UPROPERTY(editAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTip = "Determines this object is capturable by any team."))
 	bool isCapturable;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTip = "Object affilication."))
+	EAffiliation affiliation;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTip = "Maximum amount of ships for any team to have for this object."))
 	int maxShipCount;

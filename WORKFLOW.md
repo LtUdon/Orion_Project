@@ -155,7 +155,6 @@ Failed to link patch (0.000s) (Exit code: 0x451)
 	- Periodically clean your project's intermediate and binary files.
 	- This can be done by deleting the `Intermediate` and `Binaries` filders, then regenrating project files.
 ## ❓ Frequently Asked Questions
-
 **Q: The editor doesn't recognize my new class.**  
 A: If the class is made in C++, try rebuilding the project and restarting the UE Editor.
 
