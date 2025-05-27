@@ -50,6 +50,8 @@ When creating a new actor class (or any class in that matter):
 
 4. **Configure Local Settings**  
     - Set up any required environment variables or config files as described in `README.md`.
+5. **Review Websites**
+    - [Unreal Garden | Unreal Engine UI Tutorials](https://unreal-garden.com/)
 
 ## 🌿 Branching Strategy
 
