@@ -16,6 +16,7 @@ AOrbiter::AOrbiter()
 	revolutionSpeed = 1.0f;
 	rotationSpeed = 30.0f;
 	isCapturable = false;
+	maxShips = 100;
 	range = 10.0f;                    // Orbit radius
 }
 

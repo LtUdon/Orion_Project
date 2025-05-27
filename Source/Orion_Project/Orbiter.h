@@ -43,6 +43,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTip = "Determines if the object can be captured by any team."))
 	bool isCapturable;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTil = "Determines max amount of ships to be spawned on this object."))
+	int maxShips;
+
 	UPROPERTY(Transient)
 	float initialAngle = 0.0f; // In RAD
 };
