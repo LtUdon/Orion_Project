@@ -3,7 +3,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h" // Added for mesh editing
-#include "Affiliation.h"
 #include "Orbiter.generated.h"
 
 UCLASS()
@@ -43,9 +42,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTip = "Determines if the object can be captured by any team."))
 	bool isCapturable;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTip = "Determines object affiliation."))
-	EAffiliation affiliation;
 
 	UPROPERTY(Transient)
 	float initialAngle = 0.0f; // In RAD

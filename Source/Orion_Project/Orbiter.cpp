@@ -2,7 +2,6 @@
 
 
 #include "Orbiter.h"
-#include "Affiliation.h"
 
 // Sets default values
 AOrbiter::AOrbiter()
@@ -17,7 +16,6 @@ AOrbiter::AOrbiter()
 	revolutionSpeed = 1.0f;
 	rotationSpeed = 30.0f;
 	isCapturable = false;
-	affiliation = EAffiliation::None; // Default affiliation
 	range = 10.0f;                    // Orbit radius
 }
 
