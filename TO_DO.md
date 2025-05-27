@@ -1,8 +1,7 @@
 # TO DO
 ## 📝 Short-Term
-- Create an *enum class* called *Affiliation* that helps determines a node's affiliation.
-    - For determining ship affilication production, if any (will be implemented in the future).
-- Implement this *Affiliation enum class* by applying it to the `Orbiter.cpp` and/or `Orbiter.h`.
+- Test multi-level orbits
+- Try implementing the subclasses shown in `Diagrams.drawio`.
 ## 💡 Considerations
 ### 🔁 <u>Build Actor Classes in context of Purpose</u>
 - Rather than haphazardly placing models into the viewport and attempting to add the actors afterward, instead:
