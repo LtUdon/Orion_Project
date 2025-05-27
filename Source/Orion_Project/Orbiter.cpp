@@ -16,9 +16,6 @@ AOrbiter::AOrbiter()
 	revolutionSpeed = 1.0f;
 	rotationSpeed = 30.0f;
 	range = 10.0f;          // Orbit radius
-	isCapturable = false;
-	affiliation = EAffiliation::None; // Default affiliation
-	maxShipCount = 100;
 }
 
 // Called when the game starts or when spawned
