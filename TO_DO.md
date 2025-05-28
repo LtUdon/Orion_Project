@@ -1,7 +1,8 @@
 # TO DO
 ## 📝 Short-Term
 - Create a camera movement fitting for RTS games like *Empire at War (2006)*.
-    - [Unreal Engine RTS Camera Setup: Smooth Movement & Controls](https://www.youtube.com/watch?v=SKiZ_282EdI)
+    - [Unreal Engine RTS Camera Setup: Smooth Movement & Controls](https://www.youtube.com/watch?v=SKiZ_282EdI) (*Depreciated*)
+    - Continue with other references.
 - Develop the subclasses for the `Orbiter` actor (Shown in `Diagrams.drawio`).
     - Research more about C++/Blueprint conventions between classes/subclasses.
 ## 💡 Considerations
