@@ -1,15 +1,18 @@
 # TO DO
 ## 📝 Short-Term
 - Create a camera movement fitting for RTS games like *Empire at War (2006)*.
-    - [Unreal Engine RTS Camera Setup: Smooth Movement & Controls](https://www.youtube.com/watch?v=SKiZ_282EdI) (*Depreciated*)
-    - Continue with other references.
+    - ~~[Unreal Engine RTS Camera Setup: Smooth Movement & Controls by Rambot Dev](https://www.youtube.com/watch?v=SKiZ_282EdI)~~
+        - Resulted in inconsistent and involuntary camera controls.
+    - [RTS Tutorial Camera Movement - Unreal Engine 4 by Darklore Creations](https://www.youtube.com/watch?v=UcdDjDyW-EM)
+        - ...
 - Develop the subclasses for the `Orbiter` actor (Shown in `Diagrams.drawio`).
     - Research more about C++/Blueprint conventions between classes/subclasses.
 ## 💡 Considerations
 ### 🔁 <u>Build Actor Classes in context of Purpose</u>
 - Rather than haphazardly placing models into the viewport and attempting to add the actors afterward, instead:
-    1. Add the Actor (*C++ class* or *Blueprint class*).
-    2. Attach the appropriate mesh.
+    1. Build and compile the actor (*C++* or *Blueprint*) class.
+    1. Add the Actor to the Viewport (NOT the mesh).
+    1. Attach the appropriate mesh.
 - Focus on the purpose of an object (based on class) first rather than the model/mesh itself.
 ### 🌿 <u>Develop a consistent class hierarchy before developing the class system</u>
 - Before creating a new class, create a diagram for that class, no matter how layered it will be in the future.
