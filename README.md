@@ -1,5 +1,7 @@
 # Project Orion
 
+[ClickUp Link](https://app.clickup.com/90131262516/v/s/90135253849)
+
 **Project Orion** is a minimalist real-time strategy (RTS) game set in the vast reaches of space. As a fleet commander, your mission is to conquer orbiting planets and moons by mastering the timing of your deployments. Unlike traditional RTS games with static objectives, **Project Orion** introduces dynamic battlegrounds—celestial bodies that orbit their stars, challenging players to adapt their strategy in real time.
 
 ## 🎮 Features
