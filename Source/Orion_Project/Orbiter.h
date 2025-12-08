@@ -3,7 +3,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h" // Added for mesh editing
-#include "Affiliation.h"
 #include "Orbiter.generated.h"
 
 UCLASS()
