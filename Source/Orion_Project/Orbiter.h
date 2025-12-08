@@ -41,15 +41,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTip = "Distance for this object to revolve around the Target Actor."))
 	float range;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTip = "Determines if the object can be captured by any team."))
-	bool isCapturable;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTip = "A node's affiliation for ship production."))
-	EAffiliation affiliation;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Default", Meta = (ToolTil = "Max amount of ships to be spawned on this object."))
-	int maxShips;
-
 	UPROPERTY(Transient)
 	float initialAngle = 0.0f; // In RAD
 };

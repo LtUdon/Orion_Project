@@ -16,9 +16,6 @@ AOrbiter::AOrbiter()
 	// Default values
 	revolutionSpeed	= 1.0f;
 	rotationSpeed	= 30.0f;
-	isCapturable	= false;
-	affiliation		= EAffiliation::None; // Default affiliation
-	maxShips		= 100;
 	range			= 10.0f;              // Orbit radius
 }
 
@@ -30,22 +27,6 @@ void AOrbiter::BeginPlay()
 	FVector center = targetActor ? targetActor->GetActorLocation() : GetActorLocation();
 	FVector toOrbiter = GetActorLocation() - center;
 	initialAngle = FMath::Atan2(toOrbiter.Y, toOrbiter.X); // Calculate initial angle based on the current position
-
-	switch(affiliation)
-	{
-	case EAffiliation::None:
-		UE_LOG(LogTemp, Warning, TEXT("Orbiter affiliation is None."));
-		break;
-	case EAffiliation::Trojan:
-		UE_LOG(LogTemp, Warning, TEXT("Orbiter affiliation is Trojan."));
-		break;
-	case EAffiliation::Orion:
-		UE_LOG(LogTemp, Warning, TEXT("Orbiter affiliation is Orion."));
-		break;
-	default:
-		UE_LOG(LogTemp, Warning, TEXT("Orbiter affiliation is unknown."));
-		break;
-	}
 }
 
 // Called every frame
