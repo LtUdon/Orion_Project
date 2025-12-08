@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="5qQrKxn0gmMHW2GYTFAi" name="Orbiter_Class">
-        <mxGraphModel dx="921" dy="766" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="863" dy="766" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -35,13 +35,13 @@
                     <mxGeometry y="40" width="140" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="Cannon&lt;div&gt;&lt;i&gt;Blueprints&lt;/i&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;shadow=0;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
-                    <mxGeometry x="630" y="240" width="140" height="70" as="geometry"/>
+                    <mxGeometry x="630" y="280" width="140" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="13" value="Defends from enemy ships based on a radius" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="12" vertex="1">
                     <mxGeometry y="40" width="140" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="14" value="Yard&lt;div&gt;&lt;i style=&quot;color: rgb(192, 192, 192);&quot;&gt;Blueprints&lt;/i&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;shadow=0;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
-                    <mxGeometry x="630" y="340" width="140" height="100" as="geometry"/>
+                    <mxGeometry x="630" y="380" width="140" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="15" value="+ Ship storage" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="14" vertex="1">
                     <mxGeometry y="40" width="140" height="30" as="geometry"/>
@@ -50,7 +50,7 @@
                     <mxGeometry y="70" width="140" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="16" value="Teleporter&lt;div&gt;&lt;i style=&quot;color: rgb(192, 192, 192);&quot;&gt;Blueprints&lt;/i&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;shadow=0;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
-                    <mxGeometry x="630" y="480" width="140" height="70" as="geometry"/>
+                    <mxGeometry x="630" y="520" width="140" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="Deploys ships to a location instantly" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="16" vertex="1">
                     <mxGeometry y="40" width="140" height="30" as="geometry"/>
