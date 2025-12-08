@@ -5,7 +5,8 @@
 UENUM(BlueprintType)
 enum class EAffiliation : uint8
 {
-    None    UMETA(DisplayName = "None"),
-    Trojan  UMETA(DisplayName = "Trojan"),
-    Orion   UMETA(DisplayName = "Orion")
+    None   UMETA(DisplayName = "None"),
+    Trojan UMETA(DisplayName = "Trojan"),
+    Orion  UMETA(DisplayName = "Orion"),
+    Chiron UMETA(DisplayName = "Chiron")
 };
