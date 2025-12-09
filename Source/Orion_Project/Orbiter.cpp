@@ -10,8 +10,9 @@ AOrbiter::AOrbiter()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	// Create mesh and set as root
 	mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-	mesh->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	RootComponent = mesh;
 
 	// Default values
 	revolutionSpeed	= 1.0f;

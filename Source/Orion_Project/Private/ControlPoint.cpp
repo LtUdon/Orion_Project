@@ -1,10 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "ControlPoint.h"
 
 AControlPoint::AControlPoint()
 {
+	PrimaryActorTick.bCanEverTick = true;
+
 	// Default values
 	controlRate = 5.0f;
 	controlPercentage_trojan    = 0.0f;

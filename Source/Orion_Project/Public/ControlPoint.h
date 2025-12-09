@@ -14,6 +14,7 @@ UCLASS()
 class ORION_PROJECT_API AControlPoint : public AOrbiter
 {
 	GENERATED_BODY()
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
