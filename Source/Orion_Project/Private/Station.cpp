@@ -8,7 +8,7 @@ AStation::AStation()
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Default values
-	boostProductionScale = 1.5f;
+	boostProductionModifier = 1.5f;
 }
 
 void AStation::BeginPlay()

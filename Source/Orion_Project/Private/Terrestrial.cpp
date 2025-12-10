@@ -8,7 +8,7 @@ ATerrestrial::ATerrestrial()
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Default values
-	boostStorageScale = 1.5f;
+	boostStorageModifier = 1.5f;
 }
 
 void ATerrestrial::BeginPlay()

@@ -7,7 +7,7 @@
 #include "Terrestrial.generated.h"
 
 /**
- * 
+ * Represents terrestrial planets that provide storage boost.
  */
 UCLASS()
 class ORION_PROJECT_API ATerrestrial : public AControlPoint
@@ -23,6 +23,6 @@ public:
 	// Sets default values for this actor's properties
 	ATerrestrial();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Station", Meta = (ToolTip = "Scale factor for ship storage boost."))
-	float boostStorageScale;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Terrestrial", Meta = (ToolTip = "Scale factor for ship storage boost."))
+	float boostStorageModifier;
 };

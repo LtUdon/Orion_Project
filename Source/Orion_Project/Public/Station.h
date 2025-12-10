@@ -7,7 +7,7 @@
 #include "Station.generated.h"
 
 /**
- * 
+ * Represents space stations that provide production boost.
  */
 UCLASS()
 class ORION_PROJECT_API AStation : public AControlPoint
@@ -24,5 +24,5 @@ public:
 	AStation();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Station", Meta = (ToolTip = "Scale factor for ship production boost."))
-	float boostProductionScale;
+	float boostProductionModifier;
 };
