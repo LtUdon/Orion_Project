@@ -24,7 +24,7 @@ public:
 
 	// Editable mesh component
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Orbiter")
-	UStaticMeshComponent* mesh;
+	UStaticMeshComponent* OrbiterMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Orbiter", Meta = (ToolTip = "Choose an actor for this object to orbit around."))
 	AActor* targetActor;

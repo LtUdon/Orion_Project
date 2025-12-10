@@ -2,7 +2,6 @@
 
 
 #include "Orbiter.h"
-#include "Affiliation.h"
 
 // Sets default values
 AOrbiter::AOrbiter()
@@ -11,8 +10,8 @@ AOrbiter::AOrbiter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Create mesh and set as root
-	mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-	RootComponent = mesh;
+	OrbiterMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("OrbiterMesh"));
+	RootComponent = OrbiterMesh;
 
 	// Default values
 	revolutionSpeed	= 1.0f;
