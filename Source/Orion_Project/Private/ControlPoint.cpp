@@ -11,10 +11,12 @@ AControlPoint::AControlPoint()
 	controlPercentage_trojan    = 0.0f;
 	controlPercentage_orion     = 0.0f;
 	controlPercentage_chironian = 0.0f;
-	controllingFaction = EAffiliation::None;
+	controllingFaction          = EAffiliation::None;
+
 	// Order of Battle defaults
-	maxStationedShips = 50;
-	productionRate    = 2.0f;
+	maxShipsToStation   = 100;
+	productionRate      = 2.0f;
+	maxShipsToProduce   = 50;
 	presentShips_trojan = 0;
 	presentShips_orion  = 0;
 }

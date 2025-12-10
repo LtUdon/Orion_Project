@@ -47,18 +47,21 @@ public:
 	EAffiliation controllingFaction;
 
 	// Order of Battle properties
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Order of Battle", Meta = (ToolTip = "Maximum number of ships that can be produced and stationed on a control point."))
-	int maxStationedShips;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Maximum number of ships that can be stationed on a control point."))
+	int maxShipsToStation;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Order of Battle", Meta = (ToolTip = "The rate at which a control point can produce ships of the affiliation that has captured it."))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "The rate at which a control point can produce ships of the affiliation that has captured it."))
 	float productionRate;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Order of Battle", Meta = (ToolTip = "Number of Trojan ships on the control point."))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Maximum number of ships that can be produced on a control point."))
+	int maxShipsToProduce;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Number of Trojan ships on the control point."))
 	int presentShips_trojan;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Order of Battle", Meta = (ToolTip = "Number of Orion ships on the control point."))
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Number of Orion ships on the control point."))
 	int presentShips_orion;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Order of Battle", Meta = (ToolTip = "Number of Chironian ships on the control point."))
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Number of Chironian ships on the control point."))
 	int presentShips_chironian;
 };
