@@ -15,7 +15,6 @@ AControlPoint::AControlPoint()
 	controllingFaction          = EAffiliation::None;
 
 	// Order of Battle defaults
-	maxShipsToStation   = 100;
 	productionRate      = 2.0f;
 	maxShipsToProduce   = 50;
 	presentShips_trojan = 0;

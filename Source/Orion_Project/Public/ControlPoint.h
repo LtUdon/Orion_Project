@@ -47,8 +47,6 @@ public:
 	EAffiliation controllingFaction;
 
 	// Order of Battle properties
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Maximum number of ships that can be stationed on a control point."))
-	int maxShipsToStation;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "The rate at which a control point can produce ships of the affiliation that has captured it."))
 	float productionRate;
