@@ -16,7 +16,7 @@ AOrbiter::AOrbiter()
 	// Default values
 	revolutionSpeed	= 1.0f;
 	rotationSpeed	= 30.0f;
-	range			= 10.0f;              // Orbit radius
+	orbitRadius		= 10.0f;
 }
 
 // Called when the game starts or when spawned
@@ -24,9 +24,11 @@ void AOrbiter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	FVector center = targetActor ? targetActor->GetActorLocation() : GetActorLocation();
+	FVector center = IsValid(targetActor) ? targetActor->GetActorLocation() : GetActorLocation();
 	FVector toOrbiter = GetActorLocation() - center;
 	initialAngle = FMath::Atan2(toOrbiter.Y, toOrbiter.X); // Calculate initial angle based on the current position
+	
+	loggedLocation = GetActorLocation();
 }
 
 // Called every frame
@@ -35,6 +37,8 @@ void AOrbiter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	Orbit();
+
+	loggedLocation = GetActorLocation();
 }
 
 // Handles orbit behavior
@@ -43,21 +47,14 @@ void AOrbiter::Orbit()
 	float scalar                = 0.01f; // Scale factor for revolution speed
 	float scaledRevolutionSpeed = revolutionSpeed * scalar;
 	FVector center;
-	if (targetActor)
-	{
-		center = targetActor->GetActorLocation();
-	}
-	else
-	{
-		center = GetActorLocation();
-	}
+	center = targetActor ? targetActor->GetActorLocation() : GetActorLocation();
 
 	// Calculate orbit position
 	float time = GetWorld()->GetTimeSeconds();
 	float angle = time * scaledRevolutionSpeed + initialAngle;
 
-	float x = center.X + range * FMath::Cos(angle);
-	float y = center.Y + range * FMath::Sin(angle);
+	float x = center.X + orbitRadius * FMath::Cos(angle);
+	float y = center.Y + orbitRadius * FMath::Sin(angle);
 	float z = center.Z;                             // Keep aligned with target
 
 	SetActorLocation(FVector(x, y, z));

@@ -36,7 +36,10 @@ public:
 	float rotationSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Orbiter", Meta = (ToolTip = "Distance for this object to revolve around the Target Actor."))
-	float range;
+	float orbitRadius;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category  ="Orbiter", Meta = (ToolTip = "Last logged location."))
+	FVector loggedLocation;
 
 	UPROPERTY(Transient)
 	float initialAngle = 0.0f; // In RAD
