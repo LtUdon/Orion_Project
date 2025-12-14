@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "../Orbiter.h"
-#include "../Affiliation.h"
 #include "ControlPoint.generated.h"
 
 /**
@@ -43,9 +42,6 @@ public:
 
 	float getControlPercentage_neutral();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control Point", Meta = (ToolTip = "The current controlling faction of the planet."))
-	EAffiliation controllingFaction;
-
 	// Order of Battle properties
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "The rate at which a control point can produce ships of the affiliation that has captured it."))
@@ -62,4 +58,13 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Number of Chironian ships on the control point."))
 	int presentShips_chironian;
+
+	UFUNCTION(BlueprintCallable, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Register a ship when it begins orbiting the actor."))
+	void RegisterShip(EAffiliation shipFaction);
+
+	UFUNCTION(BlueprintCallable, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Unregister a ship when it leaves the orbiter its orbiting."))
+	void UnregisterShip(EAffiliation shipFaction);
+
+	UFUNCTION(BlueprintCallable, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Retrieve numerical of ships station on the actor based on the ship(s) faction."))
+	int GetShipCount(EAffiliation shipFaction) const;
 };

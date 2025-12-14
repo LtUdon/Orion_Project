@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h" // Added for mesh editing
+#include "Affiliation.h"
 #include "Orbiter.generated.h"
 
 UCLASS()
@@ -37,6 +38,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Orbiter", Meta = (ToolTip = "Distance for this object to revolve around the Target Actor."))
 	float orbitRadius;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Orbiter", Meta = (ToolTip = "Faction of this orbiter."))
+	EAffiliation faction;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category  ="Orbiter", Meta = (ToolTip = "Last logged location."))
 	FVector loggedLocation;

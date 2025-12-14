@@ -9,6 +9,7 @@ AOrbiter::AOrbiter()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+
 	// Create mesh and set as root
 	OrbiterMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("OrbiterMesh"));
 	RootComponent = OrbiterMesh;
@@ -16,7 +17,8 @@ AOrbiter::AOrbiter()
 	// Default values
 	revolutionSpeed	= 1.0f;
 	rotationSpeed	= 30.0f;
-	orbitRadius		= 10.0f;
+	orbitRadius		= 100.0f;
+	faction         = EAffiliation::None;
 }
 
 // Called when the game starts or when spawned
@@ -24,9 +26,9 @@ void AOrbiter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	FVector center = IsValid(targetActor) ? targetActor->GetActorLocation() : GetActorLocation();
+	FVector center    = IsValid(targetActor) ? targetActor->GetActorLocation() : GetActorLocation();
 	FVector toOrbiter = GetActorLocation() - center;
-	initialAngle = FMath::Atan2(toOrbiter.Y, toOrbiter.X); // Calculate initial angle based on the current position
+	initialAngle      = FMath::Atan2(toOrbiter.Y, toOrbiter.X); // Calculate initial angle based on the current position
 	
 	loggedLocation = GetActorLocation();
 }
