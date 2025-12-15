@@ -9,6 +9,9 @@ AStation::AStation()
 
 	// Default values
 	boostProductionModifier = 1.5f;
+
+	// Modify values of production rate
+	productionRate *= boostProductionModifier;
 }
 
 void AStation::BeginPlay()

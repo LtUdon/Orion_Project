@@ -24,47 +24,104 @@ public:
 	// Sets default values for this actor's properties
 	AControlPoint();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control Point", Meta = (ToolTip = "The rate at which the planet can be conquered."))
+	UPROPERTY(
+		EditAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Control Point", 
+		Meta = (
+			ToolTip = "The rate at which the planet can be conquered."))
 	float controlRate;
 
 	// Control percentages for each faction
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point", Meta = (ToolTip = "Trojan's control percentage of the planet."))
+	UPROPERTY(
+		VisibleAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Control Point", 
+		Meta = (
+			ToolTip = "Trojan's control percentage of the planet."))
 	float controlPercentage_trojan;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point", Meta = (ToolTip = "Orion's control percentage of the planet."))
+	UPROPERTY(
+		VisibleAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Control Point", 
+		Meta = (
+			ToolTip = "Orion's control percentage of the planet."))
 	float controlPercentage_orion;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point", Meta = (ToolTip = "Chironian's control percentage of the planet."))
+	UPROPERTY(
+		VisibleAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Control Point", 
+		Meta = (
+			ToolTip = "Chironian's control percentage of the planet."))
 	float controlPercentage_chironian;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point", Meta = (ToolTip = "Neutrality percentage of the planet."))
+	UPROPERTY(
+		VisibleAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Control Point", 
+		Meta = (
+			ToolTip = "Neutrality percentage of the planet."))
 	float controlPercentage_neutral;
 
 	float getControlPercentage_neutral();
 
 	// Order of Battle properties
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "The rate at which a control point can produce ships of the affiliation that has captured it."))
+	UPROPERTY(
+		EditAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Control Point: Order of Battle", 
+		Meta = (
+			ToolTip = "The rate at which a control point can produce ships of the affiliation that has captured it."))
 	float productionRate;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Maximum number of ships that can be produced on a control point."))
+	UPROPERTY(
+		EditAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Control Point: Order of Battle", 
+		Meta = (
+			ToolTip = "Maximum number of ships that can be produced on a control point."))
 	int maxShipsToProduce;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Number of Trojan ships on the control point."))
+	UPROPERTY(
+		VisibleAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Control Point: Order of Battle", 
+		Meta = (
+			ToolTip = "Number of Trojan ships on the control point."))
 	int presentShips_trojan;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Number of Orion ships on the control point."))
+	UPROPERTY(
+		VisibleAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Control Point: Order of Battle", 
+		Meta = (ToolTip = "Number of Orion ships on the control point."))
 	int presentShips_orion;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Number of Chironian ships on the control point."))
+	UPROPERTY(
+		VisibleAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Control Point: Order of Battle", 
+		Meta = (ToolTip = "Number of Chironian ships on the control point."))
 	int presentShips_chironian;
 
-	UFUNCTION(BlueprintCallable, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Register a ship when it begins orbiting the actor."))
+	UFUNCTION(
+		BlueprintCallable, 
+		Category = "Control Point: Order of Battle", 
+		Meta = (ToolTip = "Register a ship when it begins orbiting the actor."))
 	void RegisterShip(EAffiliation shipFaction);
 
-	UFUNCTION(BlueprintCallable, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Unregister a ship when it leaves the orbiter its orbiting."))
+	UFUNCTION(
+		BlueprintCallable, 
+		Category = "Control Point: Order of Battle", 
+		Meta = (ToolTip = "Unregister a ship when it leaves the orbiter its orbiting."))
 	void UnregisterShip(EAffiliation shipFaction);
 
-	UFUNCTION(BlueprintCallable, Category = "Control Point: Order of Battle", Meta = (ToolTip = "Retrieve numerical of ships station on the actor based on the ship(s) faction."))
+	UFUNCTION(
+		BlueprintCallable, 
+		Category = "Control Point: Order of Battle", 
+		Meta = (ToolTip = "Retrieve numerical of ships station on the actor based on the ship(s) faction."))
 	int GetShipCount(EAffiliation shipFaction) const;
 };

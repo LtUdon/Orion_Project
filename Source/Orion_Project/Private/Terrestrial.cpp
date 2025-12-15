@@ -9,6 +9,12 @@ ATerrestrial::ATerrestrial()
 
 	// Default values
 	boostStorageModifier = 1.5f;
+
+	// DEBUG LOG
+	FString Format = FString::Printf(TEXT(""));
+
+	// Modify values of max ship storage of production
+	maxShipsToProduce = static_cast<int>(maxShipsToProduce * boostStorageModifier);
 }
 
 void ATerrestrial::BeginPlay()

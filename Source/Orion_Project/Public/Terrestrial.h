@@ -23,6 +23,15 @@ public:
 	// Sets default values for this actor's properties
 	ATerrestrial();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Terrestrial", Meta = (ToolTip = "Scale factor for ship storage boost."))
+	UPROPERTY(
+		EditAnywhere, 
+		BlueprintReadWrite, 
+		Category = "Terrestrial", 
+		Meta = (
+			ToolTip = "Scale factor for ship storage boost.",
+			UIMin = "1.1",
+			UIMax = "5.0",
+			ClampMin = "1.1",
+			ClampMax = "5.0"))
 	float boostStorageModifier;
 };
