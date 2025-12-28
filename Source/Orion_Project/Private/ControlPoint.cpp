@@ -18,6 +18,16 @@ AControlPoint::AControlPoint()
 	maxShipsToProduce   = 50;
 	presentShips_trojan = 0;
 	presentShips_orion  = 0;
+
+	// Create selector widget and set as child to the RootComponent (OrbiterMesh)
+	SelectorWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("Selector Widget"));
+	SelectorWidget->SetupAttachment(RootComponent);
+
+	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetAsset(TEXT("/Game/Main/Widgets/W_ControlPoint.W_ControlPoint"));
+	if (WidgetAsset.Succeeded())
+	{
+		SelectorWidget->SetWidgetClass(WidgetAsset.Class);
+	}
 }
 
 void AControlPoint::BeginPlay()

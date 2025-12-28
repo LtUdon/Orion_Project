@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "../Orbiter.h"
+#include "Components/WidgetComponent.h"
 #include "ControlPoint.generated.h"
 
 /**
@@ -31,6 +32,15 @@ public:
 		Meta = (
 			ToolTip = "The rate at which the planet can be conquered."))
 	float controlRate;
+
+	// Handles the widget feature for the object.
+	UPROPERTY(
+		VisibleAnywhere,
+		BlueprintReadWrite,
+		Category = "Control Point",
+		Meta = (
+			ToolTip = "Set up the characteristics of the widget."))
+	UWidgetComponent* SelectorWidget;
 
 	// Control percentages for each faction
 	UPROPERTY(
@@ -124,4 +134,9 @@ public:
 		Category = "Control Point: Order of Battle", 
 		Meta = (ToolTip = "Retrieve numerical of ships station on the actor based on the ship(s) faction."))
 	int GetShipCount(EAffiliation shipFaction) const;
+
+	// The object's distance from camera for widget draw size configuration
+	UPROPERTY(
+		Transient)
+	float distanceFromCamera = 0.0f;
 };

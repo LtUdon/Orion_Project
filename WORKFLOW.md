@@ -26,6 +26,17 @@ After changes have been made and saved (*Ctrl + S*), when:
 1. Build/Compile the `.h` file in VS.
 2. Close then reopen the entire UE Editor → Updates the header in the *Details Panel*.
 
+### 🤔 Live Coding Implementations
+#### ✅ Live Coding works for:
+- Changing existing function implementations
+- Modifying `UPROPERTY`  values
+- Tweaking logic in existing classes
+#### ❌ Live Coding FAILS for:
+- Adding new classes to the project
+- Changing inheritance hierarchies
+- Adding new `UCLASS` , `USTRUCT` , `UENUM` 
+- Modifying component hierarchies
+
 ### ⚠️ To prevent over relaunching Unreal Project:
 When creating a new actor class (or any class in that matter):
 1. Consider all important headers that work best with the class **BEFORE** initial compilation.
