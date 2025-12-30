@@ -27,15 +27,25 @@ After changes have been made and saved (*Ctrl + S*), when:
 2. Close then reopen the entire UE Editor → Updates the header in the *Details Panel*.
 
 ### 🤔 Live Coding Implementations
-#### ✅ Live Coding works for:
+#### ✔️ Live Coding works for:
 - Changing existing function implementations
 - Modifying `UPROPERTY`  values
 - Tweaking logic in existing classes
-#### ❌ Live Coding FAILS for:
+
+#### ✖️ Live Coding FAILS for:
 - Adding new classes to the project
 - Changing inheritance hierarchies
 - Adding new `UCLASS` , `USTRUCT` , `UENUM` 
 - Modifying component hierarchies
+
+#### ✅ CORRECT WORKFLOW (For .h or UPROPERTY editing): 
+1. Close **Unreal Editor** completely 
+2. Add `YourActor.h` and `YourActor.cpp` in **Visual Studio** 
+3. **Build** → **Rebuild Solution** (full rebuild) 
+4. Wait for successful compilation 
+5. Open **Unreal Editor** 
+6. Test new class in a fresh level first 
+7. Once verified, add to your main level
 
 ### ⚠️ To prevent over relaunching Unreal Project:
 When creating a new actor class (or any class in that matter):
@@ -62,7 +72,7 @@ When creating a new actor class (or any class in that matter):
   - `develop`: Latest development changes.
 - **Feature Branches:**  
   Create a new branch for each feature or bugfix:
-  ```sh
+  ```git
   git checkout develop
   git checkout -b feature/short-description
   ```

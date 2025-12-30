@@ -42,6 +42,12 @@ public:
 			ToolTip = "Set up the characteristics of the widget."))
 	UWidgetComponent* SelectorWidget;
 
+	UPROPERTY(
+		EditDefaultsOnly,
+		BlueprintReadWrite,
+		Category = "Control Point")
+	TSubclassOf<UUserWidget> WidgetClass;
+
 	// Control percentages for each faction
 	UPROPERTY(
 		VisibleAnywhere, 

@@ -5,6 +5,8 @@
 
 AControlPoint::AControlPoint()
 {
+	FString Format = FString::Printf(TEXT(""));
+
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Default values
@@ -23,16 +25,35 @@ AControlPoint::AControlPoint()
 	SelectorWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("Selector Widget"));
 	SelectorWidget->SetupAttachment(RootComponent);
 
-	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetAsset(TEXT("/Game/Main/Widgets/W_ControlPoint.W_ControlPoint"));
+	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetAsset(TEXT("/Game/Main/Widgets/W_ControlPoint.W_ControlPoint_C"));
 	if (WidgetAsset.Succeeded())
 	{
-		SelectorWidget->SetWidgetClass(WidgetAsset.Class);
+		Format = FString::Printf(TEXT("Widget asset for Control Point found: %s"), *WidgetAsset.Class->GetName());
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Green, Format);
+		}
+		WidgetClass = WidgetAsset.Class;
+		SelectorWidget->SetWidgetClass(WidgetClass);
+	}
+	else
+	{
+		Format = FString::Printf(TEXT("Widget asset for Control Point NOT found!"));
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, Format);
+		}
 	}
 }
 
 void AControlPoint::BeginPlay()
 {
 	Super::BeginPlay();
+	if (SelectorWidget && WidgetClass)
+	{
+		SelectorWidget->SetWidgetClass(WidgetClass);
+		SelectorWidget->SetWidgetSpace(EWidgetSpace::Screen);
+	}
 }
 
 // Called every frame
