@@ -3,8 +3,6 @@
 
 #include "ControlPoint.h"
 
-FString Format = FString::Printf(TEXT(""));
-
 void PrintOnLevel(
 	int key,
 	float timeToDisplay,
@@ -20,6 +18,7 @@ void PrintOnLevel(
 AControlPoint::AControlPoint()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	FString Format = FString::Printf(TEXT(""));
 
 	// Default values
 	controlRate                 = 5.0f;
@@ -40,26 +39,32 @@ AControlPoint::AControlPoint()
 	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetAsset(TEXT("/Game/Main/Widgets/W_ControlPoint.W_ControlPoint_C"));
 	if (WidgetAsset.Succeeded())
 	{
-		Format = FString::Printf(TEXT("Widget asset for Control Point found: %s"), *WidgetAsset.Class->GetName());
-		PrintOnLevel(-1, 10.f, FColor::Green, Format);
 		WidgetClass = WidgetAsset.Class;
 		SelectorWidget->SetWidgetClass(WidgetClass);
-	}
-	else
-	{
-		Format = FString::Printf(TEXT("Widget asset for Control Point NOT found!"));
-		PrintOnLevel(-1, 10.f, FColor::Red, Format);
 	}
 }
 
 void AControlPoint::BeginPlay()
 {
 	Super::BeginPlay();
-	FString DisplayName = GetName();
-	if (SelectorWidget && WidgetClass)
+	FString Format = FString::Printf(TEXT(""));
+
+	if (SelectorWidget)
 	{
+		SelectorWidget->InitWidget(); // Force initialization of the widget
 		SelectorWidget->SetWidgetClass(WidgetClass);
 		SelectorWidget->SetWidgetSpace(EWidgetSpace::Screen);
+
+		// Give the widget (W_ControlPoint) a reference to this control point actor
+		UUserWidget* Widget = SelectorWidget->GetWidget();
+		if (Widget)
+		{
+			FObjectProperty* Property = FindFProperty<FObjectProperty>(Widget->GetClass(), TEXT("OwnerActor"));
+			if (Property)
+			{
+				Property->SetObjectPropertyValue_InContainer(Widget, this);
+			}
+		}
 	}
 }
 
