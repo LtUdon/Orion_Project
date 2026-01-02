@@ -3,10 +3,22 @@
 
 #include "ControlPoint.h"
 
+FString Format = FString::Printf(TEXT(""));
+
+void PrintOnLevel(
+	int key,
+	float timeToDisplay,
+	FColor displayColor,
+	FString format)
+{
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Green, format);
+	}
+}
+
 AControlPoint::AControlPoint()
 {
-	FString Format = FString::Printf(TEXT(""));
-
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Default values
@@ -29,26 +41,21 @@ AControlPoint::AControlPoint()
 	if (WidgetAsset.Succeeded())
 	{
 		Format = FString::Printf(TEXT("Widget asset for Control Point found: %s"), *WidgetAsset.Class->GetName());
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Green, Format);
-		}
+		PrintOnLevel(-1, 10.f, FColor::Green, Format);
 		WidgetClass = WidgetAsset.Class;
 		SelectorWidget->SetWidgetClass(WidgetClass);
 	}
 	else
 	{
 		Format = FString::Printf(TEXT("Widget asset for Control Point NOT found!"));
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, Format);
-		}
+		PrintOnLevel(-1, 10.f, FColor::Red, Format);
 	}
 }
 
 void AControlPoint::BeginPlay()
 {
 	Super::BeginPlay();
+	FString DisplayName = GetName();
 	if (SelectorWidget && WidgetClass)
 	{
 		SelectorWidget->SetWidgetClass(WidgetClass);
