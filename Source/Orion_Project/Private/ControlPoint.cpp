@@ -3,17 +3,6 @@
 
 #include "ControlPoint.h"
 
-void PrintOnLevel(
-	int key,
-	float timeToDisplay,
-	FColor displayColor,
-	FString format)
-{
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Green, format);
-	}
-}
 
 AControlPoint::AControlPoint()
 {
