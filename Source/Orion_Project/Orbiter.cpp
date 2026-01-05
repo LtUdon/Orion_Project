@@ -25,8 +25,8 @@ AOrbiter::AOrbiter()
 void AOrbiter::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	FVector center    = IsValid(targetActor) ? targetActor->GetActorLocation() : GetActorLocation();
+	   
+	FVector center    = IsValid(targetActor) ? targetActor->GetActorLocation() : GetActorLocation(); // UPDATE to have the orbiter use its own location and zero the orbit radius if no target is set
 	FVector toOrbiter = GetActorLocation() - center;
 	initialAngle      = FMath::Atan2(toOrbiter.Y, toOrbiter.X); // Calculate initial angle based on the current position
 	

@@ -13,5 +13,20 @@ ACPP_PlayerController::ACPP_PlayerController()
 void ACPP_PlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	FString Format = FString::Printf(TEXT(""));
+	
+}
+
+void ACPP_PlayerController::ControlPoint_Pressed_Implementation(AActor* pressedActor)
+{
+	PrintOnLevel(-1, 2.f, FColor::Cyan, FString::Printf(TEXT("CPP_PlayerController: %s PRESSED"), *pressedActor->GetName()));
+}
+
+void ACPP_PlayerController::ControlPoint_Released_Implementation(AActor* releasedActor)
+{
+	PrintOnLevel(-1, 2.f, FColor::Blue, FString::Printf(TEXT("CPP_PlayerController: %s RELEASED"), *releasedActor->GetName()));
+}
+
+void ACPP_PlayerController::ControlPoint_Hovered_Implementation(AActor* hoveredActor)
+{
+	PrintOnLevel(-1, 2.f, FColor::Magenta, FString::Printf(TEXT("CPP_PlayerController: %s HOVERED"), *hoveredActor->GetName()));
 }
