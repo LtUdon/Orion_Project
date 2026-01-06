@@ -20,12 +20,40 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Events")
+	UPROPERTY(
+		VisibleAnywhere, 
+		BlueprintReadOnly, 
+		Category = "Player Interacts")
+	bool isPressing;
+
+	UPROPERTY(
+		VisibleAnywhere, 
+		BlueprintReadOnly, 
+		Category = "Player Interacts"
+	)
+	bool isHovering;
+
+	UFUNCTION(
+		BlueprintNativeEvent, 
+		BlueprintCallable, 
+		Category = "Events")
 	void ControlPoint_Pressed(AActor* pressedActor);
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Events")
+	UFUNCTION(
+		BlueprintNativeEvent, 
+		BlueprintCallable, 
+		Category = "Events")
 	void ControlPoint_Released(AActor* releasedActor);
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Events")
+	UFUNCTION(
+		BlueprintNativeEvent, 
+		BlueprintCallable, 
+		Category = "Events")
 	void ControlPoint_Hovered(AActor* hoveredActor);
+
+	UFUNCTION(
+		BlueprintNativeEvent, 
+		BlueprintCallable, 
+		Category = "Events")
+	void ControlPoint_Unhovered(AActor* unhoveredActor);
 };
