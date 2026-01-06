@@ -21,17 +21,24 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(
-		VisibleAnywhere, 
-		BlueprintReadOnly, 
-		Category = "Player Interacts")
-	bool isPressing;
+		EditAnywhere,
+		BlueprintReadWrite,
+		Category = "Player Interacts",
+		Meta = (
+			ToolTip = "The actor that the player has currently pressed."
+			)
+	)
+	AActor* actorPressed;
 
 	UPROPERTY(
-		VisibleAnywhere, 
-		BlueprintReadOnly, 
-		Category = "Player Interacts"
+		EditAnywhere,
+		BlueprintReadWrite,
+		Category = "Player Interacts",
+		Meta = (
+			ToolTip = "The actor that the player is currently hovering over."
+			)
 	)
-	bool isHovering;
+	AActor* actorHovered;
 
 	UFUNCTION(
 		BlueprintNativeEvent, 
@@ -43,7 +50,7 @@ protected:
 		BlueprintNativeEvent, 
 		BlueprintCallable, 
 		Category = "Events")
-	void ControlPoint_Released(AActor* releasedActor);
+	void ControlPoint_Released();
 
 	UFUNCTION(
 		BlueprintNativeEvent, 
@@ -55,5 +62,5 @@ protected:
 		BlueprintNativeEvent, 
 		BlueprintCallable, 
 		Category = "Events")
-	void ControlPoint_Unhovered(AActor* unhoveredActor);
+	void ControlPoint_Unhovered();
 };
