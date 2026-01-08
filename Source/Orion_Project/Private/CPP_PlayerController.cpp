@@ -48,44 +48,9 @@ void ACPP_PlayerController::ControlPoint_Released_Implementation()
 void ACPP_PlayerController::ControlPoint_Hovered_Implementation(AActor* hoveredActor)
 {
 	actorHovered = hoveredActor;
-	PrintOnLevel(
-		-1, 2.f, 
-		FColor::Magenta, 
-		FString::Printf(
-			TEXT("CPP_PlayerController: actorHovered = %s"),
-			*hoveredActor->GetActorLabel()
-		)
-	);
-	PrintOnLevel(
-		-1, 2.f,
-		FColor::Green,
-		FString::Printf(
-			TEXT("> Open '%s' menu"),
-			*hoveredActor->GetActorLabel()
-		)
-	);
 }
 
 void ACPP_PlayerController::ControlPoint_Unhovered_Implementation()
 {
-	AActor* tempActor = actorHovered;
 	actorHovered = nullptr;
-	
-	PrintOnLevel(
-		-1, 2.f, 
-		FLinearColor(70.0f / 255.0f, 7.0f / 255.0f, 228.0f / 255.0f).ToFColor(true),
-		FString::Printf(
-			TEXT("CPP_PlayerController: actorHovered = %s"),
-			IsValid(actorPressed) && actorPressed ? *actorPressed->GetActorLabel() : TEXT("NONE")
-		)
-	);
-
-	PrintOnLevel(
-		-1, 2.f,
-		FColor::Red,
-		FString::Printf(
-			TEXT("< Close '%s' menu"),
-			*tempActor->GetActorLabel()
-		)
-	);
 }
