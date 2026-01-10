@@ -58,6 +58,12 @@ public:
 			ToolTip = "Main properties of the control point."))
 	FControlPoint_Main mainProperties;
 
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Control Point",
+		Meta = (ToolTip = "Update control percentages based on control rate when ships are present."))
+	void UpdateControlPercentages(float deltaTime);
+
 	// Order of Battle properties
 	UPROPERTY(
 		EditAnywhere,
