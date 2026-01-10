@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "../Orbiter.h"
 #include "Components/WidgetComponent.h"
+#include "ControlPoint_Structs.h"
 #include "ControlPoint.generated.h"
 
 /**
@@ -48,45 +49,26 @@ public:
 		Category = "Control Point")
 	TSubclassOf<UUserWidget> WidgetClass;
 
-	// Control percentages for each faction
+	// Main properties
 	UPROPERTY(
-		VisibleAnywhere, 
-		BlueprintReadWrite, 
-		Category = "Control Point", 
+		VisibleAnywhere,
+		BlueprintReadWrite,
+		Category = "Control Point",
 		Meta = (
-			ToolTip = "Trojan's control percentage of the planet."))
-	float controlPercentage_trojan;
-
-	UPROPERTY(
-		VisibleAnywhere, 
-		BlueprintReadWrite, 
-		Category = "Control Point", 
-		Meta = (
-			ToolTip = "Orion's control percentage of the planet."))
-	float controlPercentage_orion;
-
-	UPROPERTY(
-		VisibleAnywhere, 
-		BlueprintReadWrite, 
-		Category = "Control Point", 
-		Meta = (
-			ToolTip = "Chironian's control percentage of the planet."))
-	float controlPercentage_chironian;
-
-	UPROPERTY(
-		VisibleAnywhere, 
-		BlueprintReadWrite, 
-		Category = "Control Point", 
-		Meta = (
-			ToolTip = "Neutrality percentage of the planet."))
-	float controlPercentage_neutral;
-
-	float getControlPercentage_neutral();
+			ToolTip = "Main properties of the control point."))
+	FControlPoint_Main mainProperties;
 
 	// Order of Battle properties
+	UPROPERTY(
+		EditAnywhere,
+		BlueprintReadWrite,
+		Category = "Control Point",
+		Meta = (
+			ToolTip = "Order of battle properties of the control point."))
+	FOrderOfBattle orderOfBattleProperties;
 
 	UPROPERTY(
-		EditAnywhere, 
+		EditAnywhere,
 		BlueprintReadWrite, 
 		Category = "Control Point: Order of Battle", 
 		Meta = (
@@ -100,28 +82,6 @@ public:
 		Meta = (
 			ToolTip = "Maximum number of ships that can be produced on a control point."))
 	int maxShipsToProduce;
-
-	UPROPERTY(
-		VisibleAnywhere, 
-		BlueprintReadWrite, 
-		Category = "Control Point: Order of Battle", 
-		Meta = (
-			ToolTip = "Number of Trojan ships on the control point."))
-	int presentShips_trojan;
-
-	UPROPERTY(
-		VisibleAnywhere, 
-		BlueprintReadWrite, 
-		Category = "Control Point: Order of Battle", 
-		Meta = (ToolTip = "Number of Orion ships on the control point."))
-	int presentShips_orion;
-
-	UPROPERTY(
-		VisibleAnywhere, 
-		BlueprintReadWrite, 
-		Category = "Control Point: Order of Battle", 
-		Meta = (ToolTip = "Number of Chironian ships on the control point."))
-	int presentShips_chironian;
 
 	UFUNCTION(
 		BlueprintCallable, 
