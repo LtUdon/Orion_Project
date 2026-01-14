@@ -66,6 +66,7 @@ void AControlPoint::Tick(float DeltaTime)
 
 	AControlPoint::UpdateControlPercentages(DeltaTime);
 	AControlPoint::destroyRandomShip(DeltaTime);
+	AControlPoint::UpdateFaction();
 }
 
 void AControlPoint::RegisterShip(EAffiliation shipFaction)
@@ -146,29 +147,38 @@ void AControlPoint::UpdateControlPercentages(float deltaTime)
 	{
 		return; // No ships present, no control change
 	}
-	else {
-		// Decay actions
-		float controlDecay = controlRate * deltaTime * 0.5f; // Decay is half the control rate
-
-		if (orderOfBattleProperties.presentShips_trojan <= 0)
-		{
-			mainProperties.controlPercentage_trojan = FMath::Max(0.0f, mainProperties.controlPercentage_trojan - controlDecay);
-		} 
-		else if (orderOfBattleProperties.presentShips_orion <= 0)
-		{
-			mainProperties.controlPercentage_orion = FMath::Max(0.0f, mainProperties.controlPercentage_orion - controlDecay);
-		}
-		else if (orderOfBattleProperties.presentShips_chironian <= 0)
-		{
-			mainProperties.controlPercentage_chironian = FMath::Max(0.0f, mainProperties.controlPercentage_chironian - controlDecay);
-		}
-	}
 
 	// Calculate target gain for each faction based on their ship presence
-	float controlChange_trojan    = (orderOfBattleProperties.presentShips_trojan / totalShips) * controlRate * deltaTime;
-	float controlChange_orion     = (orderOfBattleProperties.presentShips_orion / totalShips) * controlRate * deltaTime;
-	float controlChange_chironian = (orderOfBattleProperties.presentShips_chironian / totalShips) * controlRate * deltaTime;
-	float totalControlChange      = controlChange_trojan + controlChange_orion + controlChange_chironian;
+	float controlChange_trojan = 0.0f;
+	float controlChange_orion = 0.0f;
+	float controlChange_chironian = 0.0f;
+	if (orderOfBattleProperties.presentShips_trojan > 0)
+	{
+	    controlChange_trojan = (orderOfBattleProperties.presentShips_trojan / totalShips) * controlRate * deltaTime;
+	} 
+	else
+	{
+		controlChange_trojan = -1.f * controlRate * deltaTime;
+	}
+
+	if (orderOfBattleProperties.presentShips_orion > 0)
+	{
+		controlChange_orion = (orderOfBattleProperties.presentShips_orion / totalShips) * controlRate * deltaTime;
+	} 
+	else
+	{
+		controlChange_orion = -1.f * controlRate * deltaTime;
+	}
+
+	if (orderOfBattleProperties.presentShips_chironian > 0)
+	{
+		controlChange_chironian = (orderOfBattleProperties.presentShips_chironian / totalShips) * controlRate * deltaTime;
+	} 
+	else
+	{
+		controlChange_chironian = -1.f * controlRate * deltaTime;
+	}
+	float totalControlChange = controlChange_trojan + controlChange_orion + controlChange_chironian;
 
 	mainProperties.controlPercentage_neutral = mainProperties.getControlPercentage_neutral();
 
@@ -265,15 +275,15 @@ void AControlPoint::destroyRandomShip(float deltaTime)
 void AControlPoint::UpdateFaction()
 {
 	// No access atm
-	if (mainProperties.controlPercentage_trojan == 100)
+	if (mainProperties.controlPercentage_trojan == 100.0f)
 	{
 		faction = EAffiliation::Trojan;
 	}
-	else if (mainProperties.controlPercentage_orion == 100)
+	else if (mainProperties.controlPercentage_orion == 100.0f)
 	{
 		faction = EAffiliation::Orion;
 	}
-	else if (mainProperties.controlPercentage_chironian == 100)
+	else if (mainProperties.controlPercentage_chironian == 100.0f)
 	{
 		faction = EAffiliation::Chiron;
 	}
