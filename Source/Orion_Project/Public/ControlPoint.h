@@ -116,7 +116,7 @@ public:
 		Category = "Control Point: Order of Battle",
 		Meta = (
 			ToolTip = "Randomly destroy a ship when more than one faction is present on a control point."))
-	void destroyRandomShip(float deltaTime);
+	void DestroyRandomShip(float deltaTime);
 
 	UFUNCTION(
 		BlueprintCallable,

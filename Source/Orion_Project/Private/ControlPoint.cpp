@@ -65,7 +65,7 @@ void AControlPoint::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	AControlPoint::UpdateControlPercentages(DeltaTime);
-	AControlPoint::destroyRandomShip(DeltaTime);
+	AControlPoint::DestroyRandomShip(DeltaTime);
 	AControlPoint::UpdateFaction();
 }
 
@@ -112,15 +112,6 @@ void AControlPoint::UnregisterShip(EAffiliation shipAffiliation)
 		default:
 			break;
 	}
-
-	UE_LOG(
-		LogTemp, 
-		Log, 
-		TEXT("%s: Ship unregistered. Trojan: %d, Orion: %d, Chironian: %d"), 
-		*GetName(), 
-		orderOfBattleProperties.presentShips_trojan,
-		orderOfBattleProperties.presentShips_orion,
-		orderOfBattleProperties.presentShips_chironian);
 }
 
 int AControlPoint::GetShipCount(EAffiliation shipFaction) const
@@ -205,6 +196,8 @@ void AControlPoint::UpdateControlPercentages(float deltaTime)
 	mainProperties.controlPercentage_chironian = FMath::Clamp(mainProperties.controlPercentage_chironian, 0.0f, 100.0f);
 	mainProperties.controlPercentage_neutral   = FMath::Clamp(mainProperties.controlPercentage_neutral, 0.0f, 100.0f);
 
+	mainProperties.controlPercentage_neutral = mainProperties.getControlPercentage_neutral();
+
 	PrintOnLevel(
 		-1, 0.001f,
 		FColor::Green,
@@ -218,7 +211,7 @@ void AControlPoint::UpdateControlPercentages(float deltaTime)
 	);
 }
 
-void AControlPoint::destroyRandomShip(float deltaTime)
+void AControlPoint::DestroyRandomShip(float deltaTime)
 {
 	// Check if more than one faction is present
 	int factionsPresent = 0;
@@ -238,36 +231,50 @@ void AControlPoint::destroyRandomShip(float deltaTime)
 		return; // No ships to destroy
 	}
 
-	// Randomly select a ship to destroy based on faction proportions
-	int randomIndex = FMath::RandRange(1, totalShips);
-	if (randomIndex <= orderOfBattleProperties.presentShips_trojan)
+	// Set up destruction selection by reversing proportions by ship count
+	float deleteFactor_trojan    = (totalShips - orderOfBattleProperties.presentShips_trojan) / static_cast<float>(totalShips);
+	float deleteFactor_orion     = (totalShips - orderOfBattleProperties.presentShips_orion) / static_cast<float>(totalShips);
+	float deleteFactor_chironian = (totalShips - orderOfBattleProperties.presentShips_chironian) / static_cast<float>(totalShips);
+
+	float totalDeleteFactor = deleteFactor_trojan + deleteFactor_orion + deleteFactor_chironian;
+
+	// Randomly select a faction to destroy a ship from
+	float randomValue = FMath::FRandRange(0.0f, totalDeleteFactor);
+	if (randomValue < deleteFactor_trojan)
 	{
-		orderOfBattleProperties.presentShips_trojan = FMath::Max(0, orderOfBattleProperties.presentShips_trojan - 1);
+		UnregisterShip(EAffiliation::Trojan);
 		PrintOnLevel(
-			-1, 
-			5.f, 
-			FColor::Cyan, 
-			FString::Printf(TEXT("%s: A Trojan ship has been destroyed!"), *GetName())
+			-1, 0.001f,
+			FColor::Cyan,
+			FString::Printf(
+				TEXT("A Trojan ship has been destroyed on %s!"),
+				*GetName()
+			)
 		);
+
 	}
-	else if (randomIndex <= orderOfBattleProperties.presentShips_trojan + orderOfBattleProperties.presentShips_orion)
+	else if (randomValue < deleteFactor_trojan + deleteFactor_orion)
 	{
-		orderOfBattleProperties.presentShips_orion = FMath::Max(0, orderOfBattleProperties.presentShips_orion - 1);
+		UnregisterShip(EAffiliation::Orion);
 		PrintOnLevel(
-			-1,
-			5.f,
+			-1, 0.001f,
 			FColor::Magenta,
-			FString::Printf(TEXT("%s: A Orion ship has been destroyed!"), *GetName())
+			FString::Printf(
+				TEXT("A Orion ship has been destroyed on %s!"),
+				*GetName()
+			)
 		);
 	}
 	else
 	{
-		orderOfBattleProperties.presentShips_chironian = FMath::Max(0, orderOfBattleProperties.presentShips_chironian - 1);
+		UnregisterShip(EAffiliation::Chiron);
 		PrintOnLevel(
-			-1,
-			5.f,
+			-1, 0.001f,
 			FColor::Yellow,
-			FString::Printf(TEXT("%s: A Chironian ship has been destroyed!"), *GetName())
+			FString::Printf(
+				TEXT("A Chiron ship has been destroyed on %s!"),
+				*GetName()
+			)
 		);
 	}
 }
