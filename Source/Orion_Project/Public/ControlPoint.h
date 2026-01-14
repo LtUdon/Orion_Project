@@ -61,7 +61,8 @@ public:
 	UFUNCTION(
 		BlueprintCallable,
 		Category = "Control Point",
-		Meta = (ToolTip = "Update control percentages based on control rate when ships are present."))
+		Meta = (
+			ToolTip = "Update control percentages based on control rate when ships are present."))
 	void UpdateControlPercentages(float deltaTime);
 
 	// Order of Battle properties
@@ -92,20 +93,39 @@ public:
 	UFUNCTION(
 		BlueprintCallable, 
 		Category = "Control Point: Order of Battle", 
-		Meta = (ToolTip = "Register a ship when it begins orbiting the actor."))
+		Meta = (
+			ToolTip = "Register a ship when it begins orbiting the actor."))
 	void RegisterShip(EAffiliation shipFaction);
 
 	UFUNCTION(
 		BlueprintCallable, 
 		Category = "Control Point: Order of Battle", 
-		Meta = (ToolTip = "Unregister a ship when it leaves the orbiter its orbiting."))
+		Meta = (
+			ToolTip = "Unregister a ship when it leaves the orbiter its orbiting."))
 	void UnregisterShip(EAffiliation shipFaction);
 
 	UFUNCTION(
 		BlueprintCallable, 
 		Category = "Control Point: Order of Battle", 
-		Meta = (ToolTip = "Retrieve numerical of ships station on the actor based on the ship(s) faction."))
+		Meta = (
+			ToolTip = "Retrieve numerical of ships station on the actor based on the ship(s) faction."))
 	int GetShipCount(EAffiliation shipFaction) const;
+
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Control Point: Order of Battle",
+		Meta = (
+			ToolTip = "Randomly destroy a ship when more than one faction is present on a control point."))
+	void destroyRandomShip(float deltaTime);
+
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Control Point: Order of Battle",
+		Meta = (
+			ToolTip = "Update affiliation when a faction assumes full control."
+			)
+	)
+	void UpdateFaction();
 
 	// The object's distance from camera for widget draw size configuration
 	UPROPERTY(

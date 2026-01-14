@@ -65,6 +65,7 @@ void AControlPoint::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	AControlPoint::UpdateControlPercentages(DeltaTime);
+	AControlPoint::destroyRandomShip(DeltaTime);
 }
 
 void AControlPoint::RegisterShip(EAffiliation shipFaction)
@@ -145,6 +146,23 @@ void AControlPoint::UpdateControlPercentages(float deltaTime)
 	{
 		return; // No ships present, no control change
 	}
+	else {
+		// Decay actions
+		float controlDecay = controlRate * deltaTime * 0.5f; // Decay is half the control rate
+
+		if (orderOfBattleProperties.presentShips_trojan <= 0)
+		{
+			mainProperties.controlPercentage_trojan = FMath::Max(0.0f, mainProperties.controlPercentage_trojan - controlDecay);
+		} 
+		else if (orderOfBattleProperties.presentShips_orion <= 0)
+		{
+			mainProperties.controlPercentage_orion = FMath::Max(0.0f, mainProperties.controlPercentage_orion - controlDecay);
+		}
+		else if (orderOfBattleProperties.presentShips_chironian <= 0)
+		{
+			mainProperties.controlPercentage_chironian = FMath::Max(0.0f, mainProperties.controlPercentage_chironian - controlDecay);
+		}
+	}
 
 	// Calculate target gain for each faction based on their ship presence
 	float controlChange_trojan    = (orderOfBattleProperties.presentShips_trojan / totalShips) * controlRate * deltaTime;
@@ -188,4 +206,79 @@ void AControlPoint::UpdateControlPercentages(float deltaTime)
 			mainProperties.controlPercentage_neutral
 		)
 	);
+}
+
+void AControlPoint::destroyRandomShip(float deltaTime)
+{
+	// Check if more than one faction is present
+	int factionsPresent = 0;
+	if (orderOfBattleProperties.presentShips_trojan > 0)    factionsPresent++;
+	if (orderOfBattleProperties.presentShips_orion > 0)     factionsPresent++;
+	if (orderOfBattleProperties.presentShips_chironian > 0) factionsPresent++;
+	if (factionsPresent <= 1)
+	{
+		return; // Only one or no faction present, no ship destruction needed
+	}
+	// Determine total ships present
+	int totalShips = orderOfBattleProperties.presentShips_trojan +
+					 orderOfBattleProperties.presentShips_orion +
+					 orderOfBattleProperties.presentShips_chironian;
+	if (totalShips <= 0)
+	{
+		return; // No ships to destroy
+	}
+
+	// Randomly select a ship to destroy based on faction proportions
+	int randomIndex = FMath::RandRange(1, totalShips);
+	if (randomIndex <= orderOfBattleProperties.presentShips_trojan)
+	{
+		orderOfBattleProperties.presentShips_trojan = FMath::Max(0, orderOfBattleProperties.presentShips_trojan - 1);
+		PrintOnLevel(
+			-1, 
+			5.f, 
+			FColor::Cyan, 
+			FString::Printf(TEXT("%s: A Trojan ship has been destroyed!"), *GetName())
+		);
+	}
+	else if (randomIndex <= orderOfBattleProperties.presentShips_trojan + orderOfBattleProperties.presentShips_orion)
+	{
+		orderOfBattleProperties.presentShips_orion = FMath::Max(0, orderOfBattleProperties.presentShips_orion - 1);
+		PrintOnLevel(
+			-1,
+			5.f,
+			FColor::Magenta,
+			FString::Printf(TEXT("%s: A Orion ship has been destroyed!"), *GetName())
+		);
+	}
+	else
+	{
+		orderOfBattleProperties.presentShips_chironian = FMath::Max(0, orderOfBattleProperties.presentShips_chironian - 1);
+		PrintOnLevel(
+			-1,
+			5.f,
+			FColor::Yellow,
+			FString::Printf(TEXT("%s: A Chironian ship has been destroyed!"), *GetName())
+		);
+	}
+}
+
+void AControlPoint::UpdateFaction()
+{
+	// No access atm
+	if (mainProperties.controlPercentage_trojan == 100)
+	{
+		faction = EAffiliation::Trojan;
+	}
+	else if (mainProperties.controlPercentage_orion == 100)
+	{
+		faction = EAffiliation::Orion;
+	}
+	else if (mainProperties.controlPercentage_chironian == 100)
+	{
+		faction = EAffiliation::Chiron;
+	}
+	else 
+	{
+		faction = EAffiliation::None;
+	}
 }
