@@ -197,19 +197,6 @@ void AControlPoint::UpdateControlPercentages(float deltaTime)
 	mainProperties.controlPercentage_neutral   = FMath::Clamp(mainProperties.controlPercentage_neutral, 0.0f, 100.0f);
 
 	mainProperties.controlPercentage_neutral = mainProperties.getControlPercentage_neutral();
-
-	PrintOnLevel(
-		-1, 0.001f,
-		FColor::Green,
-		FString::Printf(
-			TEXT("%s: Trojan: %.2f%%, Orion: %.2f%%, Chiron: %.2f%%, Neutral: %.2f%%"),
-			*GetActorLabel(),
-			mainProperties.controlPercentage_trojan,
-			mainProperties.controlPercentage_orion,
-			mainProperties.controlPercentage_chironian,
-			mainProperties.controlPercentage_neutral
-		)
-	);
 }
 
 void AControlPoint::DestroyRandomShip(float deltaTime)
