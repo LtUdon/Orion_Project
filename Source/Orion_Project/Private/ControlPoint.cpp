@@ -202,7 +202,8 @@ void AControlPoint::UpdateControlPercentages(float deltaTime)
 		-1, 0.001f,
 		FColor::Green,
 		FString::Printf(
-			TEXT("Control: Trojan: %.2f%%, Orion: %.2f%%, Chiron: %.2f%%, Neutral: %.2f%%"),
+			TEXT("%s: Trojan: %.2f%%, Orion: %.2f%%, Chiron: %.2f%%, Neutral: %.2f%%"),
+			*GetActorLabel(),
 			mainProperties.controlPercentage_trojan,
 			mainProperties.controlPercentage_orion,
 			mainProperties.controlPercentage_chironian,
@@ -243,39 +244,15 @@ void AControlPoint::DestroyRandomShip(float deltaTime)
 	if (randomValue < deleteFactor_trojan)
 	{
 		UnregisterShip(EAffiliation::Trojan);
-		PrintOnLevel(
-			-1, 0.001f,
-			FColor::Cyan,
-			FString::Printf(
-				TEXT("A Trojan ship has been destroyed on %s!"),
-				*GetName()
-			)
-		);
 
 	}
 	else if (randomValue < deleteFactor_trojan + deleteFactor_orion)
 	{
 		UnregisterShip(EAffiliation::Orion);
-		PrintOnLevel(
-			-1, 0.001f,
-			FColor::Magenta,
-			FString::Printf(
-				TEXT("A Orion ship has been destroyed on %s!"),
-				*GetName()
-			)
-		);
 	}
 	else
 	{
 		UnregisterShip(EAffiliation::Chiron);
-		PrintOnLevel(
-			-1, 0.001f,
-			FColor::Yellow,
-			FString::Printf(
-				TEXT("A Chiron ship has been destroyed on %s!"),
-				*GetName()
-			)
-		);
 	}
 }
 
