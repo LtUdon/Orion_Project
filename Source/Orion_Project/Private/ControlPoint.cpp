@@ -281,7 +281,6 @@ void AControlPoint::DestroyRandomShip(float deltaTime)
 
 void AControlPoint::UpdateFaction()
 {
-	// No access atm
 	if (mainProperties.controlPercentage_trojan == 100.0f)
 	{
 		faction = EAffiliation::Trojan;
