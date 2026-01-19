@@ -136,7 +136,7 @@ void AControlPoint::UpdateControlPercentages(float deltaTime)
 
 	if (totalShips <= 0)
 	{
-		return; // No ships present, no control change
+		return; // No ships present, no change
 	}
 
 	// Calculate target gain for each faction based on their ship presence
