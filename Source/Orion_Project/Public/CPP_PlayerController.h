@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include <../Affiliation.h>
 #include "CPP_PlayerController.generated.h"
 
 /**
@@ -17,9 +18,12 @@ class ORION_PROJECT_API ACPP_PlayerController : public APlayerController
 public:
 	ACPP_PlayerController();
 
+	virtual void Tick(float DeltaTime) override;
+
 protected:
 	virtual void BeginPlay() override;
 
+	/* Player Interactions */
 	UPROPERTY(
 		EditAnywhere,
 		BlueprintReadWrite,
@@ -40,6 +44,7 @@ protected:
 	)
 	AActor* actorHovered;
 
+	/* Events */
 	UFUNCTION(
 		BlueprintNativeEvent, 
 		BlueprintCallable, 
@@ -63,4 +68,15 @@ protected:
 		BlueprintCallable, 
 		Category = "Events")
 	void ControlPoint_Unhovered();
+
+	/* Player Characteristics */
+	UPROPERTY(
+		EditAnywhere,
+		BlueprintReadWrite,
+		Category = "Player Characteristics",
+		Meta = (
+			ToolTip = "The player's affiliation."
+			)
+	)
+	EAffiliation playerFaction;
 };
