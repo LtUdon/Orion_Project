@@ -29,9 +29,7 @@ protected:
 		BlueprintReadWrite,
 		Category = "Player Interacts",
 		Meta = (
-			ToolTip = "The actor that the player has currently pressed."
-			)
-	)
+			ToolTip = "The actor that the player has currently pressed."))
 	AActor* actorPressed;
 
 	UPROPERTY(
@@ -39,9 +37,7 @@ protected:
 		BlueprintReadWrite,
 		Category = "Player Interacts",
 		Meta = (
-			ToolTip = "The actor that the player is currently hovering over."
-			)
-	)
+			ToolTip = "The actor that the player is currently hovering over."))
 	AActor* actorHovered;
 
 	/* Events */
@@ -75,8 +71,22 @@ protected:
 		BlueprintReadWrite,
 		Category = "Player Characteristics",
 		Meta = (
-			ToolTip = "The player's affiliation."
-			)
-	)
+			ToolTip = "The player's affiliation."))
 	EAffiliation playerFaction;
+
+	UPROPERTY(
+		EditAnywhere,
+		BlueprintReadWrite,
+		Category = "Player Characteristics",
+		Meta = (
+			ToolTip = "Lists all planets that the player has ships on."))
+	TArray<AActor*> planetsOfInfluence;
+
+	UPROPERTY(
+		EditAnywhere,
+		BlueprintReadOnly,
+		Category = "Player Characteristics",
+		Meta = (
+			ToolTip = "The player's overall control over the current system."))
+	float controlOverSystem;
 };
