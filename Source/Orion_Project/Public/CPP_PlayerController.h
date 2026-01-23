@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include <../Affiliation.h>
+#include "ControlPoint.h"
 #include "CPP_PlayerController.generated.h"
 
 /**
@@ -80,7 +81,7 @@ protected:
 		Category = "Player Characteristics",
 		Meta = (
 			ToolTip = "Lists all planets that the player has ships on."))
-	TArray<AActor*> planetsOfInfluence;
+	TArray<AControlPoint*> pointsOfInfluence;
 
 	UPROPERTY(
 		EditAnywhere,

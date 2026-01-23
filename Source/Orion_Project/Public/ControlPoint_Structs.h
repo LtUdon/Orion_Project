@@ -69,6 +69,21 @@ struct FControlPoint_Main
 	{
 		return 100.f - (controlPercentage_trojan + controlPercentage_orion + controlPercentage_chironian);
 	}
+
+	float getControlPercentageByFaction(EAffiliation faction)
+	{
+		switch (faction)
+		{
+		case EAffiliation::Trojan:
+			return controlPercentage_trojan;
+		case EAffiliation::Orion:
+			return controlPercentage_orion;
+		case EAffiliation::Chiron:
+			return controlPercentage_chironian;
+		default:
+			return getControlPercentage_neutral();
+		}
+	}
 };
 
 /**
@@ -120,5 +135,20 @@ struct FOrderOfBattle
 	void updateTotalShips()
 	{
 		presentShips_total = presentShips_trojan + presentShips_orion + presentShips_chironian;
+	}
+
+	int32 getShipPresenceByFaction(EAffiliation faction)
+	{
+		switch (faction)
+		{
+		case EAffiliation::Trojan:
+			return presentShips_trojan;
+		case EAffiliation::Orion:
+			return presentShips_orion;
+		case EAffiliation::Chiron:
+			return presentShips_chironian;
+		default:
+			return 0;
+		}
 	}
 };
