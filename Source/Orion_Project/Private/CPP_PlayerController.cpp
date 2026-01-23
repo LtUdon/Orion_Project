@@ -71,27 +71,11 @@ void ACPP_PlayerController::Tick(float DeltaTime)
 void ACPP_PlayerController::ControlPoint_Pressed_Implementation(AActor* pressedActor)
 {
 	actorPressed = pressedActor;
-	PrintOnLevel(
-		-1, 2.f, 
-		FColor::Cyan, 
-		FString::Printf(
-			TEXT("CPP_PlayerController: actorPressed = %s"), 
-			*pressedActor->GetActorLabel()
-		)
-	);
 }
 
 void ACPP_PlayerController::ControlPoint_Released_Implementation()
 {
 	actorPressed = nullptr;
-	PrintOnLevel(
-		-1, 2.f, 
-		FColor::Blue, 
-		FString::Printf(
-			TEXT("CPP_PlayerController: actorPressed = %s"),
-			IsValid(actorPressed) && actorPressed ? *actorPressed->GetActorLabel() : TEXT("NONE")
-		)
-	);
 }
 
 void ACPP_PlayerController::ControlPoint_Hovered_Implementation(AActor* hoveredActor)
