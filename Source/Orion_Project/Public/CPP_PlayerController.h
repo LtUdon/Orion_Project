@@ -83,6 +83,21 @@ protected:
 			ToolTip = "Lists all planets that the player has ships on."))
 	TArray<AControlPoint*> pointsOfInfluence;
 
+	// Functions for pointsOfInfluence modification in BP
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Player Characteristics",
+		Meta = (
+			ToolTip = "Add a control point to the player's points of influence."))
+	void AddPointOfInfluence(AControlPoint* pointToAdd);
+
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Player Characteristics",
+		Meta = (
+			ToolTip = "Remove a control point from the player's points of influence."))
+	void RemovePointOfInfluence(AControlPoint* pointToRemove);
+
 	UPROPERTY(
 		EditAnywhere,
 		BlueprintReadOnly,

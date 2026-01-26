@@ -17,34 +17,35 @@ ACPP_PlayerController::ACPP_PlayerController()
 void ACPP_PlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void ACPP_PlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
 
 	FColor DEBUG_printColor = FColor::White;
-	if (playerFaction == EAffiliation::Trojan) 
+	if (playerFaction == EAffiliation::Trojan)
 	{
-		DEBUG_printColor = FColor::Cyan;
+		DEBUG_printColor = FColor::Blue;
 	}
 	else if (playerFaction == EAffiliation::Orion)
 	{
-		DEBUG_printColor = FColor::Magenta;
+		DEBUG_printColor = FColor::Red;
 	}
 	else if (playerFaction == EAffiliation::Chiron)
 	{
 		DEBUG_printColor = FColor::Yellow;
 	}
 
-	// Visible log so you can confirm runtime behavior in the Output Log.
-	UE_LOG(LogTemp, Warning, TEXT("CPP_PlayerController::BeginPlay - pointsOfInfluence.Num() = %d"), pointsOfInfluence.Num());
-	PrintOnLevel(-1, 5.0f, FColor::Yellow, FString::Printf(TEXT("CPP_PlayerController: pointsOfInfluence.Num() = %d"), pointsOfInfluence.Num()));
-
 	if (pointsOfInfluence.Num() > 0)
 	{
 		for (AControlPoint* poi : pointsOfInfluence)
 		{
 			PrintOnLevel(
-				-1, 1.f,
+				-1, 0.001f,
 				DEBUG_printColor,
 				FString::Printf(
-					TEXT("CPP_PlayerController: %s(%s): Control = %s, Presence = %s"),
+					TEXT("%s (%s): %% = %s, # = %s"),
 					*poi->GetActorLabel(),
 					*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)poi->faction).ToString(),
 					*FString::SanitizeFloat(poi->mainProperties.getControlPercentageByFaction(playerFaction)),
@@ -52,12 +53,17 @@ void ACPP_PlayerController::BeginPlay()
 				)
 			);
 		}
-	}
-}
 
-void ACPP_PlayerController::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
+		PrintOnLevel(
+			-1, 0.001f,
+			DEBUG_printColor,
+			FString::Printf(
+				TEXT("%s Territory:"),
+				*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)playerFaction).ToString()
+			)
+		);
+	}
+
 	PrintOnLevel(
 		-1, 0.001f, 
 		FColor::Green, 
@@ -86,4 +92,20 @@ void ACPP_PlayerController::ControlPoint_Hovered_Implementation(AActor* hoveredA
 void ACPP_PlayerController::ControlPoint_Unhovered_Implementation()
 {
 	actorHovered = nullptr;
+}
+
+void ACPP_PlayerController::AddPointOfInfluence(AControlPoint* pointToAdd)
+{
+	if (pointToAdd && !pointsOfInfluence.Contains(pointToAdd))
+	{
+		pointsOfInfluence.Add(pointToAdd);
+	}
+}
+
+void ACPP_PlayerController::RemovePointOfInfluence(AControlPoint* pointToRemove)
+{
+	if (pointToRemove && pointsOfInfluence.Contains(pointToRemove))
+	{
+		pointsOfInfluence.Remove(pointToRemove);
+	}
 }
