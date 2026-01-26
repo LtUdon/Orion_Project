@@ -75,6 +75,7 @@ protected:
 			ToolTip = "The player's affiliation."))
 	EAffiliation playerFaction;
 
+	// Points of Influence
 	UPROPERTY(
 		EditAnywhere,
 		BlueprintReadWrite,
@@ -83,7 +84,6 @@ protected:
 			ToolTip = "Lists all planets that the player has ships on."))
 	TArray<AControlPoint*> pointsOfInfluence;
 
-	// Functions for pointsOfInfluence modification in BP
 	UFUNCTION(
 		BlueprintCallable,
 		Category = "Player Characteristics",
@@ -98,11 +98,35 @@ protected:
 			ToolTip = "Remove a control point from the player's points of influence."))
 	void RemovePointOfInfluence(AControlPoint* pointToRemove);
 
+	// Overall Control
 	UPROPERTY(
 		EditAnywhere,
-		BlueprintReadOnly,
+		BlueprintReadWrite,
 		Category = "Player Characteristics",
 		Meta = (
 			ToolTip = "The player's overall control over the current system."))
 	float controlOverSystem;
+
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Player Characteristics",
+		Meta = (
+			ToolTip = "Calculate the player's overall control over the current system."))
+	void CalculateControlOverSystem();
+
+	// Total Ships in System
+	UPROPERTY(
+		EditAnywhere,
+		BlueprintReadWrite,
+		Category = "Player Characteristics",
+		Meta = (
+			ToolTip = "The number of ships present in the entire system."))
+	int32 totalShipsInSystem;
+
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Player Characteristics",
+		Meta = (
+			ToolTip = "Calculate the total number of ships present in the entire system."))
+	void CalculateTotalShipsInSystem();
 };

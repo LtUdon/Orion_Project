@@ -46,10 +46,10 @@ void ACPP_PlayerController::Tick(float DeltaTime)
 				DEBUG_printColor,
 				FString::Printf(
 					TEXT("%s (%s): %% = %s, # = %s"),
-					*poi->GetActorLabel(),
-					*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)poi->faction).ToString(),
-					*FString::SanitizeFloat(poi->mainProperties.getControlPercentageByFaction(playerFaction)),
-					*FString::FromInt(poi->orderOfBattleProperties.getShipPresenceByFaction(playerFaction))
+					*poi->GetActorLabel(),                                                                        // Planet DisplayName
+					*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)poi->faction).ToString(),       // Planet Faction
+					*FString::SanitizeFloat(poi->mainProperties.getControlPercentageByFaction(playerFaction), 2), // Control Percentage
+					*FString::FromInt(poi->orderOfBattleProperties.getShipPresenceByFaction(playerFaction))       // Ship Presence
 				)
 			);
 		}
@@ -66,7 +66,7 @@ void ACPP_PlayerController::Tick(float DeltaTime)
 
 	PrintOnLevel(
 		-1, 0.001f, 
-		FColor::Green, 
+		FColor::White, 
 		FString::Printf(
 			TEXT("CPP_PlayerController: playerFaction = %s"),
 			*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)playerFaction).ToString()
@@ -107,5 +107,36 @@ void ACPP_PlayerController::RemovePointOfInfluence(AControlPoint* pointToRemove)
 	if (pointToRemove && pointsOfInfluence.Contains(pointToRemove))
 	{
 		pointsOfInfluence.Remove(pointToRemove);
+	}
+}
+
+void ACPP_PlayerController::CalculateControlOverSystem()
+{
+	controlOverSystem = 0.f;
+
+	// TActorIterator<AControlPoint> it(GetWorld());
+	float totalSystemPoints      = 0.f;
+	float playerControlledPoints = 0.f;
+	for (TActorIterator<AControlPoint> it(GetWorld()); it; ++it)
+	{
+		totalSystemPoints += 100.f;
+
+		// Cast to AControlPoint
+		AControlPoint* poi      = *it;
+		playerControlledPoints += poi->mainProperties.getControlPercentageByFaction(playerFaction);
+	}
+
+	controlOverSystem = (playerControlledPoints / totalSystemPoints) * 100.f;
+}
+
+void ACPP_PlayerController::CalculateTotalShipsInSystem()
+{
+	totalShipsInSystem = 0;
+	for (AControlPoint* poi : pointsOfInfluence)
+	{
+		if (poi)
+		{
+			totalShipsInSystem += poi->orderOfBattleProperties.getShipPresenceByFaction(playerFaction);
+		}
 	}
 }
