@@ -208,9 +208,9 @@ void AControlPoint::DestroyRandomShip(float deltaTime)
 	if (orderOfBattleProperties.presentShips_chironian > 0) factionsPresent++;
 	if (factionsPresent <= 1)
 	{
-		return; // Only one or no faction present, no ship destruction needed
+		return;
 	}
-	// Determine total ships present
+	
 	int totalShips = orderOfBattleProperties.presentShips_trojan +
 					 orderOfBattleProperties.presentShips_orion +
 					 orderOfBattleProperties.presentShips_chironian;
