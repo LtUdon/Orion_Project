@@ -41,37 +41,28 @@ void ACPP_PlayerController::Tick(float DeltaTime)
 	{
 		for (AControlPoint* poi : pointsOfInfluence)
 		{
-			PrintOnLevel(
-				-1, 0.001f,
-				DEBUG_printColor,
-				FString::Printf(
-					TEXT("%s (%s): %% = %s, # = %s"),
-					*poi->GetActorLabel(),                                                                        // Planet DisplayName
-					*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)poi->faction).ToString(),       // Planet Faction
-					*FString::SanitizeFloat(poi->mainProperties.getControlPercentageByFaction(playerFaction), 2), // Control Percentage
-					*FString::FromInt(poi->orderOfBattleProperties.getShipPresenceByFaction(playerFaction))       // Ship Presence
-				)
-			);
+			//PrintOnLevel(
+			//	-1, 0.001f,
+			//	DEBUG_printColor,
+			//	FString::Printf(
+			//		TEXT("%s (%s): %% = %s, # = %s"),
+			//		*poi->GetActorLabel(),                                                                        // Planet DisplayName
+			//		*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)poi->faction).ToString(),       // Planet Faction
+			//		*FString::SanitizeFloat(poi->mainProperties.getControlPercentageByFaction(playerFaction), 2), // Control Percentage
+			//		*FString::FromInt(poi->orderOfBattleProperties.getShipPresenceByFaction(playerFaction))       // Ship Presence
+			//	)
+			//);
 		}
 
-		PrintOnLevel(
+		/*PrintOnLevel(
 			-1, 0.001f,
 			DEBUG_printColor,
 			FString::Printf(
 				TEXT("%s Territory:"),
 				*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)playerFaction).ToString()
 			)
-		);
+		);*/
 	}
-
-	PrintOnLevel(
-		-1, 0.001f, 
-		FColor::White, 
-		FString::Printf(
-			TEXT("CPP_PlayerController: playerFaction = %s"),
-			*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)playerFaction).ToString()
-		)
-	);
 }
 
 void ACPP_PlayerController::ControlPoint_Pressed_Implementation(AActor* pressedActor)
