@@ -37,23 +37,23 @@ void ACPP_PlayerController::Tick(float DeltaTime)
 		DEBUG_printColor = FColor::Yellow;
 	}
 
-	if (pointsOfInfluence.Num() > 0)
-	{
-		for (AControlPoint* poi : pointsOfInfluence)
-		{
-			PrintOnLevel(
-				-1, 0.001f,
-				DEBUG_printColor,
-				FString::Printf(
-					TEXT("%s (%s): %% = %s, # = %s"),
-					*poi->GetActorLabel(),                                                                        // Planet DisplayName
-					*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)poi->faction).ToString(),       // Planet Faction
-					*FString::SanitizeFloat(poi->mainProperties.getControlPercentageByFaction(playerFaction), 2), // Control Percentage
-					*FString::FromInt(poi->orderOfBattleProperties.getShipPresenceByFaction(playerFaction))       // Ship Presence
-				)
-			);
-		}
-	}
+	//if (pointsOfInfluence.Num() > 0)
+	//{
+	//	for (AControlPoint* poi : pointsOfInfluence)
+	//	{
+	//		PrintOnLevel(
+	//			-1, 0.001f,
+	//			DEBUG_printColor,
+	//			FString::Printf(
+	//				TEXT("%s (%s): %% = %s, # = %s"),
+	//				*poi->GetActorLabel(),                                                                        // Planet DisplayName
+	//				*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)poi->faction).ToString(),       // Planet Faction
+	//				*FString::SanitizeFloat(poi->mainProperties.getControlPercentageByFaction(playerFaction), 2), // Control Percentage
+	//				*FString::FromInt(poi->orderOfBattleProperties.getShipPresenceByFaction(playerFaction))       // Ship Presence
+	//			)
+	//		);
+	//	}
+	//}
 }
 
 void ACPP_PlayerController::ControlPoint_Pressed_Implementation(AActor* pressedActor)
