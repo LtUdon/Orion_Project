@@ -27,7 +27,7 @@ AControlPoint::AControlPoint()
 	SelectorWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("Selector Widget"));
 	SelectorWidget->SetupAttachment(RootComponent);
 
-	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetAsset(TEXT("/Game/Main/Widgets/W_ControlPoint.W_ControlPoint_C"));
+	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetAsset(TEXT("/Game/Main/Widgets/W_ControlPoint/W_ControlPoint_Icon.W_ControlPoint_Icon_C"));
 	if (WidgetAsset.Succeeded())
 	{
 		WidgetClass = WidgetAsset.Class;
