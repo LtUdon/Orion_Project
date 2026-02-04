@@ -53,25 +53,7 @@ void ACPP_PlayerController::Tick(float DeltaTime)
 				)
 			);
 		}
-
-		PrintOnLevel(
-			-1, 0.001f,
-			DEBUG_printColor,
-			FString::Printf(
-				TEXT("%s Territory:"),
-				*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)playerFaction).ToString()
-			)
-		);
 	}
-
-	PrintOnLevel(
-		-1, 0.001f, 
-		FColor::White, 
-		FString::Printf(
-			TEXT("CPP_PlayerController: playerFaction = %s"),
-			*StaticEnum<EAffiliation>()->GetDisplayNameTextByValue((int64)playerFaction).ToString()
-		)
-	);
 }
 
 void ACPP_PlayerController::ControlPoint_Pressed_Implementation(AActor* pressedActor)
