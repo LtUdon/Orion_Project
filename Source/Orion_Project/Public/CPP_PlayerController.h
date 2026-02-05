@@ -98,6 +98,21 @@ protected:
 			ToolTip = "Remove a control point from the player's points of influence."))
 	void RemovePointOfInfluence(AControlPoint* pointToRemove);
 
+	UPROPERTY(
+		EditAnywhere,
+		BlueprintReadOnly,
+		Meta = (
+			ToolTip = "Index of the last added point of influence."))
+	int32 POI_indexAdded;
+
+	UPROPERTY(
+		EditAnywhere,
+		BlueprintReadOnly,
+		Meta = (
+			ToolTip = "Index of the last removed point of influence.")
+	)
+	int32 POI_indexRemoved;
+
 	// Overall Control
 	UPROPERTY(
 		EditAnywhere,
