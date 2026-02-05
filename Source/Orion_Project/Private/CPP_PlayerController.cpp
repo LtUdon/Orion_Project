@@ -23,19 +23,19 @@ void ACPP_PlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FColor DEBUG_printColor = FColor::White;
-	if (playerFaction == EAffiliation::Trojan)
-	{
-		DEBUG_printColor = FColor::Blue;
-	}
-	else if (playerFaction == EAffiliation::Orion)
-	{
-		DEBUG_printColor = FColor::Red;
-	}
-	else if (playerFaction == EAffiliation::Chiron)
-	{
-		DEBUG_printColor = FColor::Yellow;
-	}
+	//FColor DEBUG_printColor = FColor::White;
+	//if (playerFaction == EAffiliation::Trojan)
+	//{
+	//	DEBUG_printColor = FColor::Blue;
+	//}
+	//else if (playerFaction == EAffiliation::Orion)
+	//{
+	//	DEBUG_printColor = FColor::Red;
+	//}
+	//else if (playerFaction == EAffiliation::Chiron)
+	//{
+	//	DEBUG_printColor = FColor::Yellow;
+	//}
 
 	//if (pointsOfInfluence.Num() > 0)
 	//{
