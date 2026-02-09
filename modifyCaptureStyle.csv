@@ -1,0 +1,10 @@
+,                  ,                ,              ,                  ,                 ,                ,         
+,                  ,                , No ships     , Only Trojan Ships, Only Orion Ships, Only Chiron    , Multiple
+, NONE             , Ship Production, ...          ,                  ,                 ,                ,         
+,                  , Control Changes, ...          , +Trojan control  , +Orion control  , +Chiron control, Contest 
+, TROJAN Controlled, Ship Production, +Trojan ships, +Trojan ships    ,                 ,                ,         
+,                  , Control Changes,              ,                  , -Trojan control , -Trojan control, Contest 
+, ORION Controlled , Ship Production, +Orion ships ,                  , +Orion ships    ,                ,         
+,                  , Control Changes,              , -Orion control   ,                 , -Orion control , Contest 
+, CHIRON Controlled, Ship Production, +Chiron ships,                  ,                 , +Chiron ships  ,         
+,                  , Control Changes,              , -Chiron control  , -Chiron control ,                , Contest 
