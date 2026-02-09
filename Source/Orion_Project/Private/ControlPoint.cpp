@@ -136,77 +136,131 @@ void AControlPoint::UpdateControlPercentages(float deltaTime)
 
 	if (totalShips <= 0)
 	{
-		return; // No ships present, no change
+		/* Nothing should happen */
+		return;
 	}
 
-	// Calculate target gain for each faction based on their ship presence
-	float controlChange_trojan = 0.0f;
-	float controlChange_orion = 0.0f;
-	float controlChange_chironian = 0.0f;
-	if (orderOfBattleProperties.presentShips_trojan > 0)
+	int32 numFactionsPresent = GetNumFactionsPresent();
+
+	if (numFactionsPresent > 1)
 	{
-	    controlChange_trojan = (orderOfBattleProperties.presentShips_trojan / totalShips) * controlRate * deltaTime;
-	} 
+		return;
+	}
+
+	EAffiliation presentFaction = GetFullPresentFaction();
+	if (presentFaction == EAffiliation::None)
+	{
+		return;
+	}
+
+	float controlIncrease = controlRate * deltaTime; // Per tick
+
+	if (AOrbiter::faction == EAffiliation::None)
+	{
+		GainControl(presentFaction, controlIncrease);
+	}
+	else if (AOrbiter::faction == presentFaction)
+	{
+		SetFullControl(presentFaction);
+	}
 	else
 	{
-		controlChange_trojan = -1.f * controlRate * deltaTime;
+		DecayControl(AOrbiter::faction, controlIncrease);
 	}
 
-	if (orderOfBattleProperties.presentShips_orion > 0)
+	NormalizeControlPercentages();
+}
+
+void AControlPoint::GainControl(EAffiliation factionToGain, float amount)
+{
+	switch (factionToGain)
 	{
-		controlChange_orion = (orderOfBattleProperties.presentShips_orion / totalShips) * controlRate * deltaTime;
-	} 
-	else
+	case EAffiliation::Trojan:
+		mainProperties.controlPercentage_trojan += amount;
+		mainProperties.controlPercentage_trojan  = FMath::Clamp(mainProperties.controlPercentage_trojan, 0.f, 100.f);
+		break;
+	case EAffiliation::Orion:
+		mainProperties.controlPercentage_orion += amount;
+		mainProperties.controlPercentage_orion  = FMath::Clamp(mainProperties.controlPercentage_orion, 0.f, 100.f);
+		break;
+	case EAffiliation::Chiron:
+		mainProperties.controlPercentage_chironian += amount;
+		mainProperties.controlPercentage_chironian  = FMath::Clamp(mainProperties.controlPercentage_chironian, 0.f, 100.f);
+		break;
+	default:
+		break;
+	}
+}
+
+void AControlPoint::DecayControl(EAffiliation factionToLose, float amount)
+{
+	switch (factionToLose)
 	{
-		controlChange_orion = -1.f * controlRate * deltaTime;
+	case EAffiliation::Trojan:
+		mainProperties.controlPercentage_trojan -= amount;
+		mainProperties.controlPercentage_trojan  = FMath::Max(mainProperties.controlPercentage_trojan, 0.f);
+		break;
+	case EAffiliation::Orion:
+		mainProperties.controlPercentage_orion -= amount;
+		mainProperties.controlPercentage_orion  = FMath::Max(mainProperties.controlPercentage_orion, 0.f);
+		break;
+	case EAffiliation::Chiron:
+		mainProperties.controlPercentage_chironian -= amount;
+		mainProperties.controlPercentage_chironian  = FMath::Max(mainProperties.controlPercentage_chironian, 0.f);
+		break;
+	default:
+		break;
+	}
+}
+
+void AControlPoint::SetFullControl(EAffiliation controllingFaction)
+{
+	mainProperties.controlPercentage_trojan    = (controllingFaction == EAffiliation::Trojan) ? 100.f : 0.f;
+	mainProperties.controlPercentage_orion     = (controllingFaction == EAffiliation::Orion)  ? 100.f : 0.f;
+	mainProperties.controlPercentage_chironian = (controllingFaction == EAffiliation::Chiron) ? 100.f : 0.f;
+}
+
+void AControlPoint::NormalizeControlPercentages()
+{
+	float total = mainProperties.controlPercentage_trojan + 
+				  mainProperties.controlPercentage_orion + 
+				  mainProperties.controlPercentage_chironian;
+
+	if (FMath::IsNearlyEqual(total, 100.f, 0.01f))
+	{
+		return;
 	}
 
-	if (orderOfBattleProperties.presentShips_chironian > 0)
-	{
-		controlChange_chironian = (orderOfBattleProperties.presentShips_chironian / totalShips) * controlRate * deltaTime;
-	} 
-	else
-	{
-		controlChange_chironian = -1.f * controlRate * deltaTime;
-	}
-	float totalControlChange = controlChange_trojan + controlChange_orion + controlChange_chironian;
+	mainProperties.controlPercentage_neutral = FMath::Clamp(100.f - total, 0.f, 100.f);
 
-	mainProperties.controlPercentage_neutral = mainProperties.getControlPercentage_neutral();
-
-	if (totalControlChange > mainProperties.controlPercentage_neutral)
+	// If total exceeds 100%, scale accordingly
+	if (total > 100.0f)
 	{
-		// Scale down the control changes proportionally
-		float scale              = mainProperties.controlPercentage_neutral / totalControlChange;
-		controlChange_trojan    *= scale;
-		controlChange_orion     *= scale;
-		controlChange_chironian *= scale;
+		float scale = 100.f / total;
+		mainProperties.controlPercentage_trojan    *= scale;
+		mainProperties.controlPercentage_orion     *= scale;
+		mainProperties.controlPercentage_chironian *= scale;
+		mainProperties.controlPercentage_neutral    = 0.f;
 	}
 
-	// Apply control changes
-	mainProperties.controlPercentage_trojan    += controlChange_trojan;
-	mainProperties.controlPercentage_orion     += controlChange_orion;
-	mainProperties.controlPercentage_chironian += controlChange_chironian;
+	mainProperties.controlPercentage_trojan    = FMath::Clamp(mainProperties.controlPercentage_trojan, 0.f, 100.f);
+	mainProperties.controlPercentage_orion     = FMath::Clamp(mainProperties.controlPercentage_orion, 0.f, 100.f);
+	mainProperties.controlPercentage_chironian = FMath::Clamp(mainProperties.controlPercentage_chironian, 0.f, 100.f);
+}
 
-	// Recalculate neutral (should now be correct)
-	mainProperties.controlPercentage_neutral = mainProperties.getControlPercentage_neutral();
-
-	// Clamp everything to be safe
-	mainProperties.controlPercentage_trojan    = FMath::Clamp(mainProperties.controlPercentage_trojan, 0.0f, 100.0f);
-	mainProperties.controlPercentage_orion     = FMath::Clamp(mainProperties.controlPercentage_orion, 0.0f, 100.0f);
-	mainProperties.controlPercentage_chironian = FMath::Clamp(mainProperties.controlPercentage_chironian, 0.0f, 100.0f);
-	mainProperties.controlPercentage_neutral   = FMath::Clamp(mainProperties.controlPercentage_neutral, 0.0f, 100.0f);
-
-	mainProperties.controlPercentage_neutral = mainProperties.getControlPercentage_neutral();
+int AControlPoint::GetNumFactionsPresent() const
+{
+	int factionsPresent = 0;
+	if (orderOfBattleProperties.presentShips_trojan > 0)    factionsPresent++;
+	if (orderOfBattleProperties.presentShips_orion > 0)     factionsPresent++;
+	if (orderOfBattleProperties.presentShips_chironian > 0) factionsPresent++;
+	return factionsPresent;
 }
 
 void AControlPoint::DestroyRandomShip(float deltaTime)
 {
 	// Check if more than one faction is present
-	int factionsPresent = 0;
-	if (orderOfBattleProperties.presentShips_trojan > 0)    factionsPresent++;
-	if (orderOfBattleProperties.presentShips_orion > 0)     factionsPresent++;
-	if (orderOfBattleProperties.presentShips_chironian > 0) factionsPresent++;
-	if (factionsPresent <= 1)
+	if (GetNumFactionsPresent() <= 1)
 	{
 		return;
 	}
@@ -260,5 +314,25 @@ void AControlPoint::UpdateFaction()
 	else 
 	{
 		faction = EAffiliation::None;
+	}
+}
+
+EAffiliation AControlPoint::GetFullPresentFaction() const
+{
+	if (orderOfBattleProperties.presentShips_trojan > 0)
+	{
+		return EAffiliation::Trojan;
+	}
+	else if (orderOfBattleProperties.presentShips_orion > 0)
+	{
+		return EAffiliation::Orion;
+	}
+	else if (orderOfBattleProperties.presentShips_chironian > 0)
+	{
+		return EAffiliation::Chiron;
+	}
+	else
+	{
+		return EAffiliation::None;
 	}
 }

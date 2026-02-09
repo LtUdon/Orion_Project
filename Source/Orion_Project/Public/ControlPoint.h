@@ -34,7 +34,7 @@ public:
 			ToolTip = "The rate at which the planet can be conquered."))
 	float controlRate;
 
-	// Handles the widget feature for the object.
+	/* Widget Properties */
 	UPROPERTY(
 		VisibleAnywhere,
 		BlueprintReadWrite,
@@ -49,7 +49,7 @@ public:
 		Category = "Control Point")
 	TSubclassOf<UUserWidget> WidgetClass;
 
-	// Main properties
+	/* Main Properties */
 	UPROPERTY(
 		VisibleAnywhere,
 		BlueprintReadWrite,
@@ -65,7 +65,42 @@ public:
 			ToolTip = "Update control percentages based on control rate when ships are present."))
 	void UpdateControlPercentages(float deltaTime);
 
-	// Order of Battle properties
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Control Point", 
+		Meta = (
+			ToolTip = "Increase control of the fully present faction."))
+	void GainControl(EAffiliation factionToGain, float amount);
+
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Control Point",
+		Meta = (
+			ToolTip = "Decrease control of the fully present faction."))
+	void DecayControl(EAffiliation factionToLose, float amount);
+
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Control Point",
+		Meta = (
+			ToolTip = "Maintains full control by present faction. Only applicable if the Control Point's faction is the same as the present faction."))
+	void SetFullControl(EAffiliation controllingFaction);
+
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Control Point",
+		Meta = (
+			ToolTip = "Normalize control percentages."))
+	void NormalizeControlPercentages();
+
+	UFUNCTION(
+		BlueprintCallable,
+		Category = "Control Point",
+		Meta = (
+			ToolTip = "Return the number of factions present."))
+	int GetNumFactionsPresent() const;
+
+	/* Order of Battle Properties */
 	UPROPERTY(
 		EditAnywhere,
 		BlueprintReadWrite,
@@ -126,6 +161,13 @@ public:
 			)
 	)
 	void UpdateFaction();
+
+	UFUNCTION(
+		Blueprintcallable,
+		Category = "Control Point: Order of Battle",
+		Meta = (
+			ToolTip = "Return the faction of ships present on the control point. Only applicable if the faction has full presence."))
+	EAffiliation GetFullPresentFaction() const;
 
 	// The object's distance from camera for widget draw size configuration
 	UPROPERTY(
